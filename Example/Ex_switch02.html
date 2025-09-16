@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch 연습문제</title>
+</head>
+<body>
+    <h3>Switch 연습문제 2</h3>
+    <button type="button" onclick="outputfc()">과일가격</button>
+    <input type="text" id="input">
+    <p id="output"></p>
+    <script>
+        function outputfc(){
+            let input = document.getElementById('input').value;
+            let output = document.getElementById('output');
+            console.log(`입력된 값: ${input}`);
+
+            switch(input){
+                case 'apple':
+                    output.innerHTML = `3000원, 재고:21개`;
+                    console.log(`출력값: ${output.innerHTML}`);
+                    break;
+                case 'banana':
+                    output.innerHTML = `1800원, 재고 2개`;
+                    console.log(`출력값: ${output.innerHTML}`);
+                    break;
+                case 'orange':
+                    output.innerHTML = `4200원, 재고:14개`;
+                    console.log(`출력값: ${output.innerHTML}`);
+                    break;
+                default: 
+                    output.innerHTML = '해당 과일은 판매하지 않습니다.'
+                    console.log(`출력값: ${output.innerHTML}`);
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

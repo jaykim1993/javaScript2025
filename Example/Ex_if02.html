@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IF문 예제</title>
+</head>
+<body>
+    <h1>#2 입력한 문자가 'y' 또는 'Y'면 "예", 아니면 "아니오"</h1>
+    <input type="text" id="input">
+    <button type="button" onclick="distingu()">확인</button>
+    <p id="output"></p>
+    <script>
+        function distingu(){
+            // .value가 존재하여야 반드시 그 값을 읽어올 수 있다
+            let input = document.getElementById('input').value;
+            let output = document.getElementById('output');
+            console.log(`input: ${input}`);
+            if(input == 'y' || input == 'Y'){
+                output.innerHTML = '예';}
+            else{output.innerHTML = '아니오';}
+            console.log(`출력값은 ${output.innerHTML}`);
+        }
+    </script>
+</body>
+</html>

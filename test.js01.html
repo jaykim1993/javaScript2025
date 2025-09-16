@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 연산연습</title>
+</head>
+<body>
+    <h1>자바스크립트 실습 문제</h1>
+    <!-- oneclick => 버튼을 클릭하라 -->
+     <!-- proble() => 함수이름 -->
+      <!-- 해석: 버튼을 클릭하면 proble()함수를 실행하라 -->
+    <button type="button" onclick="proble()">
+        문제1: 변수와 상수 출력
+    </button>
+
+    <!-- 결과 화면 출력 하는 곳 -->
+     <p id="p1"></p>
+     <!-- javascript 영역: <script></script> -->
+      <script>
+        // 1. proble() 함수를 만든다
+        // 2. 함수를 생성 시, 반드시 fuction 명령어 입력
+        // 3. 함수 구성: funtion proble(매계변수 혹은 빈값){실행할 명령문이 들어가야함}
+        function proble(){
+            //id='p1'이라는 이름을 가진 태그를 pri라는 변수에 저장
+            let pri= document.getElementById('p1');
+            let name='홍길동'; // name이라는 변수에 홍길동이라는 값이 저장됨
+            const age= 20;
+            name='개나리';
+            // console.log(name + "의 나이는 " + age +"세 입니다."); // console창에 출력됨
+            // 브라우저에 출력 원함
+            // pri.innerHTML = name + "의 나이는 " + age +"세 입니다.";
+            // 빽틱 `  `사이에 출력하는 변수와 문자는 + 없이 사용가능
+            // `나이: ${변수이름}
+            // innerHTML: pri 즉 p1 태그에 값이 입력되게 하라
+            pri.innerHTML = `이름 ${name}의 나이는 ${age}세 입니다.`;
+            console.log(`이름 ${name}의 나이는 ${age}세 입니다.`);
+                }
+      </script>
+</body>
+</html>

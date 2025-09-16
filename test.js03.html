@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산연습문제3</title>
+</head>
+<body>
+    <h1>javaScript연습문제</h1>
+    <button type="button" onclick="stringd()">
+        문제 3: 문자열 연결
+    </button>
+    <h2 id="hello"></h2>
+    <script>
+        function stringd(){
+                let strings=document.getElementById('hello');
+                let str1="Hello";
+                let str2="World";
+                console.log(`문자열1:${str1}, 문자열2:${str2}`);
+                strings.innerHTML=`${str1} ${str2}`;
+                }
+    </script>
+</body>
+</html>

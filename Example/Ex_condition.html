@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>총 연습문제</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;    
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+        }
+        .card {
+            width: 450px;
+            background: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-radius: 15px;
+            padding: 30px;
+        }
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            color: #444;
+        }
+        input[type="number"] {
+            width: 95%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            outline: none;
+            margin-bottom: 15px;
+            transition: border 0.3s ease;
+            font-size: 15px;
+        }
+        input[type="number"]:focus {
+            border: 1px solid #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+        }
+        button {
+            width: 100%;
+            padding: 12px 0;
+            border: none;
+            border-radius: 8px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        ul {
+            margin-top: 20px;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 15px;
+            border: 1px solid #e0e0e0;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h3>직원 근무시간 급여 계산</h3>
+        <label for="workHoursInput">근무 시간 입력:</label>
+        <input type="number" id="workHoursInput" name="workHours" placeholder="숫자를 입력하세요">
+        <button type="button" onclick="calculatePayroll()">급여 계산</button>
+        <ul>
+            <li><p id="payrollResult"></p></li>
+            <li><p id="workStateResult"></p></li>
+            <li><p id="payStatusResult"></p></li>
+        </ul>
+    </div>
+
+    <script>
+        function calculatePayroll() {
+            let workHours = Number(document.getElementById('workHoursInput').value);
+            let payrollElement = document.getElementById('payrollResult');
+            let workStateElement = document.getElementById('workStateResult');
+            let payStatusElement = document.getElementById('payStatusResult');
+    
+            console.log(`근무시간: ${workHours}`);
+            
+            let payrollResult = 0; // 근무 수당 초기화
+            let workStateText = ""; // 근무 메세지 초기화
+            let payStatusText = ""; // 급여 상태 초기화
+            let basePay = 10000; // 기본급 세팅
+            let extraPay = (workHours - 8) * basePay * 1.5; // 초과 급여 세팅: (초과 근무시간) * (초과 수당)
+            
+            // 급여: if문
+            if (workHours > 8) {
+                payrollResult = (8 * basePay + extraPay); // // 값 정의: 기본급여 + 초과급여
+                payrollElement.innerHTML = 
+                `급여: ${payrollResult.toLocaleString()}원 
+                = (기본급 80,000원) + (초과 ${extraPay.toLocaleString()}원)`; // HTML 출력
+                console.log(`급여: ${payrollResult.toLocaleString()}원 
+                = (기본급 80,000원) + (초과 ${extraPay.toLocaleString()}원)`); // console 출력
+            } else {
+                payrollResult = (workHours * basePay); // // 값 정의: 기본급여 
+                payrollElement.innerHTML = 
+                `급여: ${payrollResult.toLocaleString()}원 (기본급)`; // HTML 출력
+                console.log(`급여: ${payrollResult.toLocaleString()}원 (기본급)`); // console 출력
+            }
+            
+            // 근무 메세지: switch(true)문
+            switch (true) {
+                case workHours === 0: // 근무 시간: 0
+                    workStateText = '출근하지 않았습니다.'; // 값 정의
+                    break;
+                case workHours > 0 && workHours <= 8: // 근무 시간: 정상 근무
+                    workStateText = '정상 근무'; // 값 정의
+                    break;
+                case workHours > 8: // 근무 시간: 8시간 초과
+                    workStateText = '초과 근무'; // 값 정의
+                    break;
+            }
+            workStateElement.innerHTML = `근무 메시지: ${workStateText}`; // HTML 출력
+            console.log(`근무 메시지: ${workStateText}`); // console 출력
+            
+            // 급여 상태: 3항 연산자
+            payStatusText = workHours <= 0 ? '무급' : '급여 있음'; // 값 정의
+            payStatusElement.innerHTML = `급여 상태: ${payStatusText}`; // HTML 출력
+            console.log(`급여 상태: ${payStatusText}`); // console 출력
+        }
+    </script>
+</body>
+</html>

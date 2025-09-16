@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IF문 예제</title>
+</head>
+<body>
+    <h3>#4 사용자가 입력한 숫자가 1과 10 사이인지 확인</h3>
+    <input type="text" id="input">
+    <button type="button" onclick="tempchk()">확인</button>
+    <p id="output"></p>
+    <script>
+        function tempchk(){
+            // .value가 존재하여야 반드시 그 값을 읽어올 수 있다
+            let input = Number(document.getElementById('input').value);
+            let output = document.getElementById('output');
+            console.log(`input: ${input}`);
+                // 유효한 숫자값이 아닌 경우 반납하는 if절
+                if (isNaN(input)) {
+                output.innerHTML = '숫자를 입력하세요.';
+                }
+            if( input < 10 && input > 1){
+                output.innerHTML = '범위 안에 있음';
+            }
+            else { output.innerHTML = '범위 밖에 있음';
+                
+            }
+            console.log(`출력값은 ${output.innerHTML}`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>논리 연산자 연습문제</title>
+</head>
+<body>
+    <h1>논리 연산자 연습문제</h1>
+    <input id="num1" type="number" placeholder="숫자1"/>
+    <input id="num2" type="number" placeholder="숫자2"/>
+    <button onclick="compareNum()">비교</button>
+    <p id="output"></p>
+    <!-- javaScript -->
+     <script>
+        function compareNum(){
+            let n1 = Number(document.getElementById('num1').value);
+            let n2 = Number(document.getElementById('num2').value);
+            let result = document.getElementById('output');
+            console.log(`첫번째 값: ${n1}, 두번째 값: ${n2}`);
+            let ifA = n1 > n2; 
+            let ifB = n1 == n2;
+            console.log(`연산결과A: ${ifA}, 연산결과B: ${ifB}`);
+            result.innerHTML = `n1 > n2 ? ${ifA}, n1 == n2 ? ${ifB}`;
+            console.log(result.innerHTML);
+            // console창에서 &gy;는 <의 의미이다.
+        }
+        // NaN 오류는 숫자가 아니란 뜻으로 .value 확인해야 한다.
+     </script>
+</body>
+</html>
