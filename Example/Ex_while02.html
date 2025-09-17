@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while문 연습문제</title>
+</head>
+<body>
+    <h3>문제: 사용자 입력 횟수만큼 Hello 출력</h3>
+    <input type="text" id="input"><button type="button" onclick="outputFuction()">실행</button>
+    <p id="output"></p>
+    <script>
+        function outputFuction(){
+            let input = Number(document.getElementById('input').value);
+            let output = document.getElementById('output');
+            // 변수 초기화
+            let NumOfPrint = 0;
+            let total = "";
+
+            while(NumOfPrint <= input){
+                total += 'Hello<br/>'; // total을 innerHTML으로 출력하기에 HTML 태그가 적용가능함
+                NumOfPrint++;
+            }
+            output.innerHTML = total; // 최종 누적 나열값 출력
+    }
+        
+    </script>
+</body>
+</html>
