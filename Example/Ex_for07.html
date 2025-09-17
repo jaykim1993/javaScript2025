@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <title>for문 연습문제</title>
+</head>
+<body>
+    <h3>문제7: 1부터 ~ n까지의 합</h3>
+    <input type="text" id="input">
+    <button type="button" onclick="addFunction()">실행</button>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        function addFunction(){
+            let input = Number(document.getElementById('input').value);
+            // 결과를 담을 변수 초기화
+            console.log(input);
+            let result = 0;
+            for(i = 1; i <= input; i++){
+                result = result + i;
+            }
+            output.innerHTML = `1부터 ${input}까지의 합: ${result}`; // 값 출력
+        }
+    </script>
+</body>
+</html>

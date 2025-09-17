@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <title>for문 연습문제</title>
+</head>
+<body>
+    <h3>문제9: 입력된 값만큼 별 뽑기</h3>
+    <input type="text" id="input">
+    <button type="button" onclick="addFunction()">실행</button>
+    <p id="output"></p>
+    <script>
+        function addFunction(){
+            let output = document.getElementById('output');
+            let input = Number(document.getElementById('input').value);
+            // 다중 for문
+            // for문안에 for문이 존재함
+            let result = "";
+            for(let i = 1; i <= input; i++){
+                for(let j = 1; j <= i; j++){
+                    result += `*`; // 별 갯수 input만큼 인쇄
+                }
+                result += '<br/>'; // 이후 줄 바꿈
+                output.innerHTML = result;
+            }
+        }
+    </script>
+</body>
+</html>
