@@ -22,7 +22,7 @@
             console.log(inputArray); // ['출석','결석','출석','지각','출석'] 문자 배열이 생성
         
             for(let i=0; i<inputArray.length; i++){
-               if(inputArray[i].trim() === '출석'){ // 왼쪽, 오른쪽 공백을 값을 제거하는 함수
+               if(inputArray[i].trim() === '출석'){ // 왼쪽, 오른쪽 공백(문자열로 인식)을 제거하는 함수
                 // 문자열의 경우에만 사용 가능!
                 result += '○,';
                } else if(inputArray[i].trim() === '결석'){
