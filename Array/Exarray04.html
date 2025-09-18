@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 기초 연습 문제</title>
+</head>
+<body>
+    <h3>문제4: 1~10 배열, 짝수만 출력 push 이용</h3>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        let nums = [];
+        let result = '';
+
+        // nums 배열에 값 push
+        for (let j = 1; j<=10; j++){
+            nums.push(j);
+        }
+        console.log(nums); // 콘솔 출력
+
+        // 짝수 값만 출력
+        for(let i=0; i<=nums.length-1; i++){
+            if(i%2 == 1){
+           result += nums[i] + ' '; 
+            }
+        }
+        console.log(result); // 콘솔 출력
+
+        output.innerHTML = '4번: ' + result; // 값 출력
+    </script>
+</body>
+</html>

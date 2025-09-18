@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for 연습문제</title>
+</head>
+<body>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        let n = 30;
+        let result = '';
+
+        for(let i = 1; i <= n; i++){
+            // 줄바꿈
+            for(let j = 1; j <= n-i; j++){ // 공백
+                result += '&nbsp' + '&nbsp';
+            }
+            for(let k = 1; k <= i; k++){ // 별
+                result += '★' + '';
+            }
+            result += '<br/>';
+        }
+        for(let i = 1; i <= n; i++){
+            // 줄바꿈
+            for(let j = 1; j <= i; j++){ // 공백
+                result += '&nbsp' + '&nbsp';
+            }
+            for(let k = 1; k <= n-i; k++){ // 별
+                result += '★' + '';
+            }
+            result += '<br/>';
+        }
+        output.innerHTML = result;
+
+    </script>
+</body>
+</html>

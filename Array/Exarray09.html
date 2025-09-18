@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 심화 연습 문제</title>
+</head>
+<body>
+    <h3>문제9: 배열 + for문 + if문 문제</h3>
+    <label for="input">2번 숫자 배열 입력 (예: 12,7,5,20,33,18): </label>
+    <input type="text" id="input">
+    <button type="button" onclick="scriptFunc()">결과 확인</button>
+    <p id="output"></p>
+    <script>
+        function scriptFunc(){
+            let output = document.getElementById('output');
+            let input = document.getElementById('input').value;
+
+            let inputArray = input.split(',').map(Number);
+            let result = '';
+            let evenVal = ''; 
+            let oddVal = '';
+            console.log(input);
+            console.log(inputArray);
+        
+            for(let i=0; i<=inputArray.length-1; i++){
+               if(inputArray[i]%2==0){
+                evenVal += inputArray[i] + ',';
+               } else {
+                oddVal += inputArray[i] + ',';
+               }
+            }
+            console.log(evenVal);
+            console.log(oddVal);
+
+            evenVal = evenVal.slice(0, -1);
+            oddVal = oddVal.slice(0, -1);
+            
+
+            result += '짝수: ' + evenVal  + ' / 홀수: ' + oddVal; 
+            console.log(result);
+            output.innerHTML = result; // 값 출력
+        }
+    </script>
+</body>
+</html>
