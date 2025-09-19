@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 실습 문제01</title>
+</head>
+<body>
+    <input type="text" id="input" onkeyup="if(window.event.keyCode==13) scriptFunc()" placeholder="예: 자바스크립트 입문">
+    <button type="button" onclick="scriptFunc()">재고 확인</button>
+    <p id="output"></p>
+
+    <script>
+        function scriptFunc(){
+            let output = document.getElementById('output');
+            let input = document.getElementById('input').value.trim();  // 사용자 입력 값
+            let bookName = ['자바스크립트 입문', 'HTML & CSS', '파이썬 기초', '데이터 분석'];
+
+            let index = bookName.indexOf(input);
+
+            if(index !== -1){
+                output.innerHTML = `"${input}"은(는) 배열의 <strong>${index}</strong>번 인덱스에 있습니다.`;
+            } else {
+                output.innerHTML = `"${input}"은(는) 배열에 존재하지 않습니다.`;
+            }
+        }
+    </script>
+</body>
+</html>

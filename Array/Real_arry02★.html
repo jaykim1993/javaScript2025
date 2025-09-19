@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 실습 문제02</title>
+    <style>
+         body {
+        font-family: Arial, sans-serif;
+        line-height: 2;
+        background-color: #a18e8e;
+        color: #333;
+        
+        }
+        .container{
+            width: 600px;
+            padding: 30px;
+            border-radius: 30px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0.3);
+            margin: 0 auto;
+            margin-top: 100px;
+
+        }
+        h3 {
+            color: #444;
+            text-align: center;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        input, button {
+            padding: 8px 12px;
+            margin-right: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #444;
+        }
+
+        button {
+            background-color: #666;
+            color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #333;
+            font-weight: bold;
+
+        }
+
+        #output {
+            width: 265px;
+            margin-top: 15px;
+            padding: 10px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .Green {
+            color: green;
+            font-weight: bold;
+        }
+
+        .Red {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>검색 가능 항목</h3>
+        <ul>
+            <li>책 제목</li>
+            <li>모든 재고 확인</li>
+        </ul>
+        <input type="text" id="input" onkeyup="if(window.event.keyCode==13)scriptFunc()" placeholder="예: 모든 재고 확인">
+        <button type="button" onclick="scriptFunc()">재고 확인</button>
+        <p id="output"></p>
+    </div>
+    <script>
+        function scriptFunc(){
+            let output = document.getElementById('output');
+            let input = document.getElementById('input').value.trim();
+
+            // 책 제목과 수량
+            let bookName = ['자바스크립트 입문','HTML & CSS','파이썬 기초','데이터 분석'];
+            let bookQty  = [10,3,7,2];
+
+            // 재고 여부 배열 생성 (map 사용)
+            let qtyCheck = bookQty.map(qty => 
+                qty <= 5 
+                ? '<span class="Red">재고 부족</span>' 
+                : '<span class="Green">재고 충분</span>'
+            );
+
+            // 모든 재고 출력용
+            let allStock = bookName.map((name, i) => 
+                `${name}: ${bookQty[i]} - ${qtyCheck[i]}`
+            ).join('<br/>');
+
+            // 입력값 확인
+            if (input === '모든 재고 확인') {
+                output.innerHTML = allStock;
+                return;
+            }
+
+            let index = bookName.indexOf(input);
+            if (index !== -1) {
+                output.innerHTML = `${bookName[index]}: ${bookQty[index]} - ${qtyCheck[index]}`;
+            } else {
+                output.innerHTML = '<span class="Red">검색 가능 항목만 입력하세요!!</span>';
+            }
+        }
+    </script>
+</body>
+</html>

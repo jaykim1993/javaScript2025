@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 실습 문제07</title>
+    <style>
+        .red{
+            color: red;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <h3>칼로리 확인</h3>
+
+    <button type="button" onclick="scriptFunc()">치킨</button>
+    <button type="button" onclick="scriptFunc()">샐러드</button>
+    <button type="button" onclick="scriptFunc()">피자</button>
+    <button type="button" onclick="scriptFunc()">과일</button>
+    <p id="output"></p>
+    
+    <script>
+        function scriptFunc(){
+            let input = document.getElementById('input');
+            let output = document.getElementById('output'); 
+            let food = ['치킨','샐러드','피자','과일'];
+            let carb = [10, 30, 100, 70];
+            let protein = [45,8,38,2];
+            let fat = [50,13,80,1];
+            let kcalTotal = [];
+            console.log(food);
+            console.log(carb);
+            console.log(protein);
+            console.log(fat);
+
+            // 칼로리 총량 구하기
+            // kcal = 탄*4kcal + 단*4kcal + 지*9kcal (g당)
+            for(let i=0; i<food.length; i++){
+                kcalTotal[i] = 4*carb[i] + 4*protein[i] + 9*fat[i];
+            }
+            console.log(kcalTotal);
+
+            // 결과값 출력
+            let result = '';
+            for(let i=0;i<food.length;i++){
+                if(kcalTotal[i]>=500){
+                    result += `${food[i]} : 탄:${carb[i]}g 단:${protein[i]}g 지:${fat[i]}g 총칼로리(100g당): ${kcalTotal[i]}kcal <- <span class="red">고칼로리!!</span> <br/>` ;
+                }else result += `${food[i]} : 탄:${carb[i]}g 단:${protein[i]}g 지:${fat[i]}g 총칼로리(100g당): ${kcalTotal[i]}kcal <br/>`;
+            }
+            console.log(result);
+            output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

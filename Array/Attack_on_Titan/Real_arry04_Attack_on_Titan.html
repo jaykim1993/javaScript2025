@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 실습 문제02</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #e0ecfa;
+            color: #333;
+            text-align: center;
+            
+        }
+        .container{
+            width: 600px;
+            padding: 20px;
+            border-radius: 30px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            margin: 0 auto;
+            margin-top: 50px;
+            display: flex;
+
+        }
+        .candidate{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            justify-content: center;
+        }
+        img{
+            width: 150px;
+            height: 150px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.39);
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        .voteResult{
+            width: 50%;
+            background-color: rgb(255, 255, 255);
+        }
+        h3{
+            
+            margin-bottom: 50px;
+            font-size: 40px;
+            text-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        ul, li {
+           
+            list-style: none;
+           
+            font-weight: bold;
+        }
+
+        button {
+            width: 600px;
+            padding: 8px 12px;
+            background-color: #666;
+            color: #f9f9f9;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 20px;
+            margin: 0 auto;
+            border: none;
+        }
+        button:hover {
+            background-color: #333;
+            font-weight: bold;
+        }
+        #output1{
+            font-size: 30px;
+        }
+        .underline{
+            text-decoration: underline;
+            font-size: 35px;
+            font-weight: bold;
+        }
+        .Green {
+            color: green;
+            font-weight: bold;
+        }
+
+        .Red {
+            color: red;
+            font-weight: bold;
+        }
+        
+        #output2{
+            margin-top: 70px;
+            line-height: 2;
+            font-size: 23px;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>제34회 전교회장 투표 결과</h3>
+    <button type="button" onclick="scriptFunc()">결과 확인</button>
+    <p id="output1"></p>
+    <div class="container">
+        <div class="candidate">
+            <ul>
+                <li><img src="/Array/Attack_on_Titan/eren yeager.jpg"><p>에렌 예거</p></li>
+                <br>
+                <li><img src="/Array/Attack_on_Titan/mikasa.jpg"><p>미사카 아커만</p></li>
+                <br>
+                <li><img src="/Array/Attack_on_Titan/armin.jpg"><p>아르민 알베르토</p></li>
+                <br>
+                <li><img src="/Array/Attack_on_Titan/hange.jpg"><p>한지 조에</p></li>
+                <br>
+                <li><img src="/Array/Attack_on_Titan/levi ackerman.jpg"><p>리바이 아커만</p></li>
+                <br>
+                <li><img src="/Array/Attack_on_Titan/erwin.jpg"><p>에르빈 스미스</p></li>
+                <br>
+            </ul>
+        </div>
+        <div class="voteResult">
+            <p id="output2"></p>
+        </div>
+    </div>
+
+    <script>
+        function scriptFunc(){
+            let output1 = document.getElementById('output1'); //output1: 최종 당선인 구하기
+            let output2 = document.getElementById('output2'); //output2: 개별 득표, 등수 구하기
+            let canName = ['에렌 예거','미사카 아커만','아르민 알베르토','한지 조에','리바이 아커만','에르빈 스미스'];
+            let voteValue  = [5,12,23,30,18,29];
+            
+            
+            // 등수 배열 구하기
+            let canRank = [];
+            // for문 내에서, 투표 결과값을 비교하며, i가 j보다 작으면 rank에 1씩 더한다.
+            for (let i = 0; i < voteValue.length; i++) {
+                let rank = 1; // 처음 rank = 1 세팅한다.
+                for (let j = 0; j < voteValue.length; j++) {
+                    if (voteValue[i] < voteValue[j]) {
+                        rank++;
+                    }
+                }
+                canRank.push(rank); //  전체 다 비교 하고 그 값을 canRank[i]에 push한다.
+            }
+            
+
+            // 최대값 구하기
+            let maxValue = voteValue[0];
+            // for문 내에서 최댓값에 비교하여 그 값을 정한다
+            for(let i = 0; i<voteValue.length;i++){
+                if(voteValue[i]>maxValue){
+                    maxValue = voteValue[i];
+                }
+            }console.log(maxValue);
+
+            
+            //output1: 최종 당선인 구하기
+            let index = canRank.indexOf(1); // 득표수 1위의 인덱스 값 뽑기
+            console.log(index);
+            console.log(canName[index]); // 득표수 1위의 인덱스 값으로 이름 뽑기
+            console.log(voteValue[index]); // 득표수 1위의 인덱스 값으로 투표수 뽑기
+            output1.innerHTML = '당선인은 '+ `<span class="Red">${voteValue[index]}</span>표를 획득한  <span class="underline">${canName[index]}</span>입니다!`;
+            
+            //output2: 개별 득표, 등수 구하기
+            //당선인 확인
+            let result = '';
+            for(let i = 0; i < canName.length; i++){
+                result += `<b>${canName[i]}</b><br/><span class="Red">투표결과: ${voteValue[i]}</span> <span class="Green">등수: ${canRank[i]}</span>`+ '<br/>'+ '<br/>'+ '<br/>'+ '<br/>';
+                }
+            
+            console.log(result);
+            output2.innerHTML = result;
+
+        }
+    </script>
+</body>
+</html>
