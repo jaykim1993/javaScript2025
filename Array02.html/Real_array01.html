@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>좌석 배치표 만들기</title>
+    <style>
+        
+        table{
+            border-collapse: collapse;
+            border-style:1px solid black;
+            margin: 0 auto;
+        }
+        table tr, td{
+            padding: 10px 15px;
+            text-align: center;
+            transition: 0.2s;
+        }
+        h3{
+            text-align: center;
+        }
+        table td:hover{
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h3>1. 좌석 배치표(5X5)</h3>
+    <p id="output"></p>
+    <script>
+        let output=document.getElementById('output')
+        let arr=Array.from(Array(5),()=>new Array(5));
+        let result= '<table border="1">';
+        let k = 1;
+        for(let i=0;i<arr.length;i++){
+            result = `<tr>${result}`;
+
+            for(let j=0;j<arr[i].length;j++){
+                arr[i][j]=k++;
+                result += `<td>${arr[i][j]}</td>`;
+            }
+            
+            result = `${result}</tr>`;
+        }
+
+        result=`${result}</table>`;
+        output.innerHTML = result;
+    </script>
+    
+</body>
+</html>

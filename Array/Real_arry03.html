@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 실습 문제03</title>
+    <style>
+        .Green {
+            color: green;
+        }
+        .Red {
+            color: red;
+        }
+        table{
+            padding: 20px;
+            border-collapse: collapse;
+            border-style:ridge;
+            margin-top: 50px;
+        }
+        table tr, th, td{
+            padding: 10px 70px;
+            font-size: 20px;
+        }
+        .container{
+            width: 600px;
+            height: 800px;
+            padding: 30px;
+            margin: 0 auto;
+            margin-top: 100px;
+            border: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.281);
+            border-radius: 10px;
+            line-height: 4;
+            text-align: center;
+        }
+        h3{
+            text-align: left;
+        }
+        button{
+            width: 100%;
+            padding: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.281);
+        }
+        button:hover{
+             box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>상품 가격 비교</h3>
+        <button type="button" onclick="scriptFunc()">상품 출력</button>
+        <p id="output"></p>
+    </div>
+    <script>
+        function scriptFunc(){
+            let output = document.getElementById('output');
+            // 초기값 세팅
+            let itemName = ['노트북', '마우스', '모니터', '키보드'];
+            let itemPrice = [120000, 30000, 80000, 50000];
+            let itemLevel = [];
+            
+            // 아이템 등급 배열 만들기
+            for(let i = 0; i < itemName.length; i++){
+                    if(itemPrice[i] < 50000){
+                        itemLevel[i] = '<span class="Green">저가</span>';
+                    } else {itemLevel[i] = '<span class="Red">고가</span>';}
+                }
+            console.log(itemLevel);
+            
+            // 결과값 테이블 출력
+            let result = `<table border="1"><tr><th>이름</th><th>HTML</th><th>CSS</th>`;
+                for(let i = 0; i < itemName.length; i++){
+                    result += `<tr><td>${itemName[i]}</td><td>${itemPrice[i]}</td><td>${itemLevel[i]}</td></tr>`;
+                    }
+            result += `</table>`;
+            console.log(result);
+            output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

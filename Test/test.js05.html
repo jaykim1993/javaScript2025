@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산문제5</title>
+</head>
+<body>
+    <h1>javaScript연습문제</h1>
+    <input id='input' type="text" placeholder="숫자입력">
+    <button type="button" onclick="inputpro()">값 확인</button>
+    <p id="output1"></p>
+    <p id="output2"></p>
+    <script>
+        // <input>태그에 입력된 모든 값은 문자 데이터형식임을 잊지말자.
+        // <input>태그에 입력된 모든 값을 읽어 오려면 반드시 .value 메서드를 사용해야한다.
+        function inputpro(){
+            let output1fc = document.getElementById('output1');
+            let output2fc = document.getElementById('output2');
+            // number() => 괄호안의 인수를 숫자로 변경하는 함수
+            let inputfc = Number(document.getElementById('input').value);
+            console.log(`input 입력 값 ${inputfc}`);
+            output1.innerHTML=`input 입력 값 = ${inputfc}`;
+            // 더하기 이후 연산 값
+            console.log(`더하기 결과값(output) = ${output2fc.innerHTML}`);
+            output2fc.innerHTML=`input 입력 값(${inputfc}) + 5 =  ${inputfc+5}`;
+            
+        }
+    </script>
+</body>
+</html>

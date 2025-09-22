@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 심화 연습 문제</title>
+</head>
+<body>
+    <h3>문제11: 배열 + for문 + switch 문제</h3>
+    <label for="input">5번 장바구니 가격 배열 입력 (예: 12000,5000,15000,3000,7000): </label>
+    <input type="text" id="input" onkeyup="if(window.event.keyCode==13)scriptFunc()">
+    <button type="button" onclick="scriptFunc()">결과 확인</button>
+    <p id="output"></p>
+    <script>
+        function scriptFunc(){
+            let output = document.getElementById('output');
+            let input = document.getElementById('input').value;
+
+            // 초기값 선언
+            let cart = [];
+            cart = input.split(',').map(Number);
+            let result = '';
+
+            for(let i = 0; i < cart.length; i++){
+                let priceLevel = '';
+                switch(true){
+                    case cart[i] >= 10000:
+                        result += cart[i] + '원: 고가, ';
+                        break;
+                    case cart[i] >= 5000:
+                        result += cart[i] + '원: 중저가, ';
+                        break;
+                    default:
+                        result += cart[i] + '원: 저가, ';
+                        break;
+                }
+            }
+            result = result.slice(0,-2);
+            output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

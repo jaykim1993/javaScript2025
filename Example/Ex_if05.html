@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IF문 예제</title>
+</head>
+<body>
+    <h3>#5 국어, 영어, 수학 평균이 70 이상이면 "합격", 아니면 "불합격"</h3>
+    <input type="text" id="input1">
+    <input type="text" id="input2">
+    <input type="text" id="input3">
+    <button type="button" onclick="scorechk()">확인</button>
+    <p id="output"></p>
+    <script>
+        function scorechk(){
+            // .value가 존재하여야 반드시 그 값을 읽어올 수 있다
+            // Number(): 인풋값을 숫자값으로 변환하는 함수
+            let input1 = Number(document.getElementById('input1').value);
+            let input2 = Number(document.getElementById('input2').value);
+            let input3 = Number(document.getElementById('input3').value);
+            let output = document.getElementById('output');
+            console.log('여기까지 ok');
+            console.log(`국어: ${input1}, 영어: ${input2}, 수학: ${input3}`);
+
+            let avr = ((input1 + input2 + input3) / 3);
+
+            if(avr >= 70){
+                console.log('70이상 ok');
+                output.innerHTML = `평균: ${avr}, 합격`;
+            } else {
+                console.log('70미만 ok');
+                output.innerHTML = `평균: ${avr}, 불합격`;
+            }
+
+            console.log(`출력값은 ${output.innerHTML}`);
+        }
+    </script>
+</body>
+</html>

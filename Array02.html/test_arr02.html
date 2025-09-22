@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2차원 배열 연습</title>
+</head>
+<body>
+    <p = id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        
+        // 01. 기본 배열 선언하기
+            // 이차원 배열 생성 => arr=[['a','b'],['c','d']]
+            let arr = [
+                ['a','b'],
+                ['c','d'],
+                ['e','f']
+            ];
+            console.log(arr.length); // 행의 길이: 3
+            console.log(arr[0].length); // 열의 길이: 2
+            //for문을 이용해 콘솔 출력
+            // arr[i].length = 열의 갯수
+            // i=0일때 열의 갯수 2개 따라서 => j=0,j=1
+            for(let i=0;i<arr.length;i++){ // 행의 갯수 루프 for문
+                for(let j=0;j<arr[i].length;j++){ //열의 갯수 루프 for문
+                }
+                console.log(arr[i]);
+            }
+        
+        // 2. ES6버젼 브라우저에서 사용가능한 2차원 배열 생성 방식
+            // arr01=Array.from(Array(6), ()=>new Array(7))
+            // from(Array(6) => 행의 갯수, 6행
+            // ()=>new Array(7)) => 열의 갯수, 7열
+            // 의 빈 배열을 생성한다
+            // => arr01 = 
+            // [[0,0,0,0,0,0,0],
+            // [0,0,0,0,0,0,0],
+            // [0,0,0,0,0,0,0],
+            // [0,0,0,0,0,0,0],
+            // [0,0,0,0,0,0,0],
+            // [0,0,0,0,0,0,0]]
+
+            let arr01=Array.from(Array(6),()=>new Array(7));
+            console.log(arr01.length); // 행의 길이: 6
+            console.log(arr01[0].length); // 열의 길이: 7
+            // 값 채워서 콘솔 출력
+            for(let i=0; i<arr01.length;i++){
+                for(let j=0;j<arr01[i].length;j++){
+                    arr01[i][j] = 0;
+                }
+                console.log(arr01[i]);
+            }
+
+            // 처음에 빈값말고 'X' 채우기
+            let arr02=Array.from(Array(3),()=>new Array(4).fill('X'));
+            // arr02 = [[[X,X,X,X]],
+            //         [[X,X,X,X]],
+            //         [[X,X,X,X]]]
+            for(let i=0; i<arr02.length; i++){
+                console.log(arr02[i]);
+            }
+
+        // 응용문제 1
+            // 오른쪽 아래 하나씩 대각선만 1
+            let arr03=Array.from(Array(3),()=>new Array(3).fill(0));
+            for(let i=0;i<arr03.length;i++){
+                for(let j=i;j<=i;j++){
+                        arr03[i][j]=1;
+                }
+                console.log(arr03[i]);
+            }
+
+        // 응용문제 2
+            // 2행 4열짜리 생성 후 1~8까지
+            let arr04=Array.from(Array(2),()=>new Array(4));
+            let k=1;
+            for(let i=0;i<arr04.length;i++){
+                for(let j=0;j<arr04[i].length;j++){
+                    arr04[i][j]=k++;
+                }
+                console.log(arr04[i]);
+            }
+
+        // 응용문제 3
+            // 4행, 4열 배열 생성 후 짝수열은 0, 홀수열은 1로 채우기
+            let arr05=Array.from(Array(4),()=>new Array(4).fill(0));
+            for(let i=0;i<arr05.length;i++){
+                for(let j=0;j<arr05[i].length;j+=2){
+                    arr05[i][j]=1;
+                }
+                // 선생님 방식
+                // for(let j=0;j<arr05[i].length;j++){
+                //  arr05[i][j]=(j+1)%2===0? 0:1;
+                // }
+                console.log(arr05[i]);
+            }
+        // 응용문제 4
+            let arr06=[
+                [1,2,3],
+                [4,5,6],
+                [7,8,9],
+                [10,11,12]
+            ];
+            let sum = 0;
+            for(let i=0;i<arr06.length;i++){
+                for(let j=0;j<arr06[i].length;j++){
+                    sum+=arr06[i][j];
+                }
+            }
+            console.log('합계= '+sum);
+        // 응용문제 5
+            // arr06 배열 이용하여 행별 합을 구하시오
+                let row=0;
+                for(let i=0;i<arr06.length;i++){
+                    for(let j=0;j<arr06[i].length;j++){
+                        row+=arr06[i][j];
+                    }
+                    console.log((i+1)+'행의 합= '+row);
+                    row=0;
+                }
+        // 응용문제 6
+            // 최대값 찾기
+            let arr07=[
+                [3,9,2],
+                [8,7,6],
+                [1,4,5]
+            ]
+            let maxValue=0; // 새로운 방식 ㄱㄱ
+            let chkR=0, chkC=0; //maxValue의 행과 열 index값을 따로 저장하는 것
+            for(let i=0;i<arr07.length;i++){
+                for(let j=0;j<arr07[i].length;j++){
+                    if(arr07[i][j]>=maxValue){
+                        chkR = i;
+                        chkC = j;
+                        maxValue=arr07[i][j];
+                    }
+                }
+            }
+            console.log('행렬의 최대값= '+arr07[chkR][chkC]);
+    </script>
+</body>
+</html>

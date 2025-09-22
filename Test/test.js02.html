@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산연습문제2</title>
+</head>
+<body>
+    <h1>javaScript연습문제</h1>
+    <button type="button" onclick="proble2()">
+        문제2: 두 수 더하기
+    </button>
+    <p id="p2"></p>
+    <script>
+        function proble2(){
+            let pro = document.getElementById('p2');
+            let num1=10;
+            let num2=5;
+            // 항상 콘솔로 디버깅해서 오류검사 한다. 아래와 같은 방식으로
+            console.log(`num1:${num1}, num2:${num2}`);
+            console.log(`합계: ${num1+num2}`);
+            // 콘솔창에 아무것도 나오지 않는다면, 윗부분에서 문제가 있는것!
+            pro.innerHTML=`합계: ${num1+num2}`;
+        }
+        
+        // %의 의미 => 나머지 구하는 기호
+        let a=25;
+        let b=2;
+        console.log(`a를 b로 나눈 나머지: ${a % b}`);
+        console.log(`a를 b로 나눈 몫: ${a / b}`);
+
+        // 3항연산자 ; 리액트에서 if 대신 자주 사용됨.
+        // 조건 ? true일때 값 : false일때 값 ; true = 1, false = 0
+        // 조건 => 비교대상 비교연산자 비교값
+        // 국어가 90이상이면 '패스', 아니면 '재수강'
+        // 국어 >= 90
+        // => 국어 >= 90 ? '패스':'재수강'
+        let kor = 85;
+        kor >= 90 ? '패스' : '재수강';
+        console.log(`${kor >= 90 ? '패스' : '재수강'}`);
+
+        // 다중 3항연산자 => if대용, 식이 간편
+        // kor이 90 이상이면 '수', 
+        // 80이상이면 '우', 그 이외에는 '재수강'
+        let result = kor>=90?'수':kor>=80?'우':'재수강';
+        console.log(`${result}`);
+        // if kor>=90 then
+        // result='수'
+        // else if kor>=80 then 
+        // result='우'
+        // else result='재수강'
+        // end if
+    </script>
+</body>
+</html>

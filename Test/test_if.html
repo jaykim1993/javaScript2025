@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang=ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IF 조건문 연습문제 시리즈</title>
+</head>
+<body>
+    <h1>IF 조건문 연습문제 시리즈</h1>
+    <script>
+        // #1 짝수 / 홀수 판단 콘솔 출력
+        let num = 3;
+        if(num % 2 == 0){
+            // 조건이 True일때
+            console.log(`${num}은 짝수입니다.`);
+        }else{
+            // 조건 만족하지 않을 때 (False)
+            console.log(`${num}은 홀수입니다.`);
+        }
+
+
+        // #2 나이가 20이상이면 성인입니다. 아니면 미성년자 입니다.
+        let age = 20;
+        age = 12;
+        if(age >= 20){
+            console.log(`성인입니다.`);
+        }else{
+            console.log(`미성년자입니다.`);
+        }
+        
+
+        // #3 스코어 문제, else if 사용
+        let score = 0;
+        score = 90;
+        if(score >= 90){
+            console.log(`A`);
+        }else if(score >= 80){
+            console.log(`B`);
+        }else if(score >= 70){
+            console.log(`C`);
+        }else if(score >= 60){
+            console.log(`D`);
+        }else{
+            console.log(`F`);
+        }
+
+
+        // #4 숫자 3개 중 최대값 찾기
+        let a = 1;
+        let b = 12;
+        let c = 16;
+        // 임시 변수 max 만들고 a값을 상수로 사용
+        let max = a;
+        if(b > max){
+            max = b;
+            console.log(max);
+        }
+        if(c > max){
+            max = c;
+            console.log(max);
+        }
+        console.log(`최대값: ${max}`);
+
+
+        // #5 id=admin 이면서 pw=admin1234이면 로그인성공
+        // 아니면 실패
+        let id = "";
+        let pw = "";
+        id = "admin";
+        pw = "admin124";
+        if(id == "admin" && pw == "admin1234"){
+            console.log(`로그인성공`);
+        } else {
+            console.log(`로그인 실패`);
+        }
+        // #5-응용 실패 시 아이디 비빌번호 구분
+        if(id == "admin"){
+            if(pw == "admin1234"){
+                console.log(`로그인성공`);
+            } else { 
+                console.log(`비밀번호를 확인하세요`);
+            }
+        } else {
+            console.log(`아이디를 확인하세요`);
+        }
+
+
+        // #6 숫자비교
+        // x=5 y=7,
+        // x가 y보다 크면 x
+        // y가 x보다 크면 y
+        // x == y면 같다 출력
+        let x = 5, y =1;
+        if(x > y)console.log(`x`);
+        if(x == y)console.log(`같다`);
+        if(x < y)console.log(`y`);
+        // 한줄로 if문 쓸때는 중괄호 쓰지 않는다.
+
+
+        // #7 양수 / 음수 / 0 출력하기
+        let k = -3;
+        if(k > 0)console.log(`양수`);
+        if(k == 0)console.log(`0`);
+        if(k < 0)console.log(`음수`);
+
+
+        // 유효한 숫자값이 아닌 경우 반납하는 if절 함수
+            // if (isNaN(input)) {
+            // output.innerHTML = '유효한 숫자를 입력하세요.';
+    </script>
+</body>
+</html>

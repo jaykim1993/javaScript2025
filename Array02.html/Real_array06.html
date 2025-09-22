@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2차원 배열 추가 문제</title>
+    <style>
+        /* .item {
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 400px;
+            display: block;
+        } */
+    </style>
+</head>
+<body>
+    <h3>아름다운 이미지 보고 힐링하세요!</h3>
+    <div id="container">
+    </div>
+
+    <script>
+        let arr = [
+            ["https://picsum.photos/id/1011/400/300", "산"],
+            ["https://picsum.photos/id/1025/400/300", "강아지"],
+            ["https://picsum.photos/id/1003/400/300", "건물"],
+            ["https://picsum.photos/id/1035/400/300", "해변"],
+            ["https://picsum.photos/id/1040/400/300", "숲"],
+        ]; // 5X2
+
+        let container = document.getElementById("container");
+        
+        let result1=0;
+        let result2=0;
+        for (let i = 0; i < arr.length; i++) {
+            for(let j = 0; j<arr[i].length;j++)
+            if(j = 0){
+                result1 += '<img src="'+ arr[i][j] + '">';
+            }result2 += '<p>'+ arr[i][j]+'</p>';
+            
+        }
+       container.innerHTML = result1 + result2;
+
+    </script>
+</body>
+</html>
