@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date 연습문제</title>
+</head>
+<body>
+    <button onclick="showYear()">1.현재 연도 출력</button>
+    <p id="outputYear"></p>
+    <button onclick="showDay()">2. 오늘 요일 출력</button>
+    <p id="outputDay"></p>
+    <button onclick="showTime()">3. 현재 시간 출력</button>
+    <p id="outputTime"></p>
+    <button onclick="dayCounter()">4. 특정 날짜까지 남은 일수 계산</button>
+    <p id="outputCounter"></p>
+    <button onclick="printDayAfter()">5. 하루 후, 일주일 후 날짜 출력</button>
+    <p id="outputAfter"></p>
+    <script>
+        let today = new Date();
+        // 1. 현재 연도 출력 함수
+        function showYear(){
+            let outputYear = document.getElementById('outputYear');
+
+            let yearToday = today.getFullYear();
+            console.log(`올해는 ${yearToday}년 입니다.`);
+            outputYear.innerHTML = `올해는 ${yearToday}년 입니다.`;
+        }
+
+        // 2. 오늘 요일 출력 함수
+        function showDay(){
+            let outputDay = document.getElementById('outputDay');
+
+            let dayToday = today.getDay();
+            let dayArr = ['일','월','화','수','목','금','토'];
+            let result = '';
+            for(let i=0;i<dayArr.length;i++){
+                if(i===dayToday){
+                    result = dayArr[i];
+                    break;
+                }
+            }
+            console.log(`오늘은 ${result}요일입니다.`);
+            outputDay.innerHTML = `오늘은 ${result}요일입니다.`;
+            
+        }
+            
+        // 3. 현재 시간 출력 함수
+        function showTime(){
+            let outputTime = document.getElementById('outputTime');
+
+            let hoursToday = today.getHours();
+            let minutesToday = today.getMinutes();
+            let secondsToday = today.getSeconds();
+            console.log(`현재 시간: ${hoursToday}:${minutesToday}:${secondsToday}`);
+            outputTime.innerHTML = `현재 시간: ${hoursToday}:${minutesToday}:${secondsToday}`;
+        }
+
+        // 4. 특정 날짜까지 남은 일수 계산
+        function dayCounter(){
+            let outputCounter = document.getElementById('outputCounter');
+
+            
+            let dateBday = Date.parse('2026/01/08'); //.parse 사용
+            let now = Date.now(); // .now 사용
+            console.log(`생일 누적 수: ${dateBday}`);
+            console.log(`오늘자 누적 수: ${now}`);
+
+            let dayLeft = (dateBday - now)/86400000 + 1;
+            
+            outputCounter.innerHTML = `생일까지 ${dayLeft.toFixed(0)}일 남았습니다.`;
+            // toFixed(0): 소숫점 제거~
+        }
+
+        // 5. 하루 후, 일주일 후 날짜 출력
+        function printDayAfter(){
+            let outputAfter = document.getElementById('outputAfter');
+
+            let dayAfterADay = `${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()+1}일`;
+            console.log(dayAfterADay);
+            let dayAfterAWeek = `${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()+7}일`;
+            console.log(dayAfterAWeek);
+            outputAfter.innerHTML = `하루 후 ${dayAfterADay} | 일주일 후 ${dayAfterAWeek}`;
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>달력 만들기 (6X7)</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            border-style:1px solid black;
+            margin: 0 auto;
+        }
+        table tr, th, td{
+            padding: 10px 15px;
+            text-align: center;
+            transition: 0.2s;
+        }
+        h3{
+            text-align: center;
+        }
+        table td:hover{
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h3>3. 달력 만들기 (6X7)</h3>
+    <p id="output"></p>
+    <script>
+        let output=document.getElementById('output')
+
+        let arr=Array.from(Array(6),()=>new Array(7));
+        const weekdays = ['일','월','화','수','목','금','토'];
+        let startDay=1;
+        let endDay=31;
+
+        let result = `<table border="1"><tr>`;
+
+        for(let i = 0;i<weekdays.length;i++){
+            result += `<th>${weekdays[i]}</th>`;
+        }
+        result += `</tr>`;
+        
+        for(let i=0;i<arr.length;i++){
+            result += `<tr>`;
+            for(let j=0;j<arr[i].length;j++){
+                if(startDay<=endDay){
+                    arr[i][j]=startDay++;
+                    result += `<td>${arr[i][j]}</td>`
+                }else{
+                    result += `<td></td>`
+                };
+            }
+            result += `</tr>`;
+            if(startDay>endDay)break; 
+            // 지금같은 경우 쓸데없는 행이 하나 더 생기는데, 
+            // 31일까지 출력 후  전체 for 문을 빠져나온다!
+        }
+        result+=`</table>`;
+        output.innerHTML = result;
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 심화 연습 문제</title>
+</head>
+<body>
+    <h3>문제8: 배열 + for문 + if문 문제</h3>
+    <label for="input">1번 점수 배열 입력 (예: 95,67,80,55,100,72): </label>
+    <input type="text" id="input">
+    <button type="button" onclick="scriptFunc()">결과 확인</button>
+    <p id="output"></p>
+    <script>
+        function scriptFunc(){
+            let output = document.getElementById('output');
+            let input = document.getElementById('input').value.split(',').map(Number);
+            // split(',')으로 나눈 값은 문자열이므로 Number()로 숫자 변환
+
+
+            let result = '';
+            console.log(input);
+
+            for(let i = 0; i < input.length; i++){
+                let grade = input[i] >= 90 ? 'A' :
+                            input[i] >= 80 ? 'B' :
+                            input[i] >= 70 ? 'C' : 'F';
+                result += input[i] + '점: ' + grade + ', ';
+            }
+            console.log(result);
+            result = result.slice(0,-2); // 마지막 콤마 제거위한 함수
+            output.innerHTML = result; // 값 출력
+        }
+    </script>
+</body>
+</html>

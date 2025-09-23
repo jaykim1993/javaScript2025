@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 실습 문제01</title>
+    <style>
+        body{
+            width: 500px;
+            margin: 0 auto;
+        }
+        .container{
+            margin-top: 100px;
+            padding: 20px;
+            background-color: beige;
+            box-shadow: 0 0 10px rgba(0,0,0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+        h3{
+            font-size: 30px;
+        }
+        button{
+            color: blue;
+            padding: 20px;
+            font-size: 20px;
+            background-color: rgba(95, 158, 160, 0.425);
+        }
+        button:hover{
+            font-weight: bold;
+            background-color: rgb(95, 158, 160);
+        }
+        .green{
+            color: green;
+            font-weight: bold;
+        }
+        .red{
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>학생 성적표</h3>
+        <button type="button" onclick="btnClick()">성적표 출력</button>
+        <p id="output"></p>
+    </div>
+    <script>
+            function btnClick(){
+            let output = document.getElementById('output');
+            let names = ['철수', '영희', '민수','수지','준호'];
+            let scores = [85, 58, 92, 77, 61];
+            let result = '';
+                  for(let j = 0; j <= scores.length-1; j++){
+                        if(scores[j] >= 60){
+                              result += `${names[j]} : ` + `${scores[j]}점 -` + '<span class="green">합격</span> <br/>' ;
+                        }else result += `${names[j]} : ` + `${scores[j]}점 -` + '<span class="red">불합격</span> <br/>' ;
+                  }
+               output.innerHTML =  result;
+            }
+      </script>
+    </script>
+</body>
+</html>

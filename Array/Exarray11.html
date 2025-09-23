@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 심화 연습 문제</title>
+</head>
+<body>
+    <h3>문제11: 배열 + for문 + 3항 연산자 문제</h3>
+    <label for="input">4번 온도 배열 입력 (예: 15,22,30,35,18): </label>
+    <input type="text" id="input" onkeyup="if(window.event.keyCode==13)scriptFunc()">
+    <button type="button" onclick="scriptFunc()">결과 확인</button>
+    <p id="output"></p>
+    <script>
+        function scriptFunc(){
+            let output = document.getElementById('output');
+            let input = document.getElementById('input').value;
+
+            // 초기값 선언
+            let temps = [];
+            let result = '';
+            console.log(input); 
+            // '15,22,30,35,18'
+
+            // input 입력받은 문자열을 숫자로 저장된 배열화 하기
+            // .split(,) => 숫자로 구성된 문자열 배열화
+            // .map(Number) => 문자열 배열을 숫자 배열화
+            temps = input.split(',');
+            console.log(temps); 
+            // ['15', '22', '30', '35', '18']
+
+            temps = input.split(',').map(Number);
+            console.log(temps);
+            // [15, 22, 30, 35, 18]
+
+            for(let i = 0; i < temps.length; i++){
+                let level = temps[i] >= 30? '뜨거움' :
+                            temps[i] >= 20? '적당' : '시원';
+                result += temps[i] + ': ' + level + ', '; 
+                console.log(level);
+                }
+            console.log('결과값: ' + result);
+            result = result.slice(0,-2);
+            output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

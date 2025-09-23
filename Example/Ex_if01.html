@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IF문 예제</title>
+</head>
+<body>
+    <h1>#1 영어 점수가 50이상이고 수학 점수가 50이상이면 "통과"</h1>
+    <input type="text" id="input1">
+    <input type="text" id="input2">
+    <button type="button" onclick="passorfail()">확인</button>
+    <p id="output"></p>
+    <script>
+        function passorfail(){
+            // .value가 존재하여야 반드시 그 값을 읽어올 수 있다
+            let input1 = Number(document.getElementById('input1').value);
+            let input2 = Number(document.getElementById('input2').value);
+            let output = document.getElementById('output');
+            if (isNaN(input1) || isNaN(input2)) {
+                output.innerHTML = '점수만 입력하세요!';
+                return;
+                }
+            console.log(`input1: ${input1}`);
+            console.log(`input2: ${input2}`);
+            if(input1 >= 50 && input2 >= 50)
+            {output.innerHTML='나쁘지 않군 합격!'} 
+            else{output.innerHTML='공부 좀 더 해라 이놈아!!'};
+            console.log(`출력값은 ${output.innerHTML}`);
+        }
+    </script>
+</body>
+</html>

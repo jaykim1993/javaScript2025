@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 실습 문제06</title>
+    <style>
+        .blue{
+            color: blue;
+            font-weight: bold;
+        }
+        .orange{
+            color: orange;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h3>학생 키 비교</h3>
+    <button type="button" onclick="scriptFunc()">키 확인</button>
+    <p id="output"></p>
+    
+    <script>
+        function scriptFunc(){
+            let output = document.getElementById('output'); 
+            let name = ['철수','영희','민수','수지','준호'];
+            let height = [172,165,180,158,175];
+            let result = '';
+
+            console.log(result);
+            for(let i=0;i<name.length;i++){
+                if(height[i]>=170){
+                    result += `${name[i]} : ${height[i]}cm - <span class="blue">키 큰 학생</span> <br/>` ;
+                }else result += `${name[i]} : ${height[i]}cm - <span class="orange">키 작은 학생</span> <br/>`;
+            }
+            console.log(result);
+            output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

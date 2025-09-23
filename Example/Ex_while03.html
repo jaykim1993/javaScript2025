@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while문 연습문제</title>
+</head>
+<body>
+    <h3>문제: 1부터 10까지 중 홀수만 출력</h3>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        let n = 1;
+        // 결과를 담을 변수 초기화
+        let result = 0;
+        while(n <= 10){ // n=11이면 루프종료
+            if(n % 2 == 1){
+            result = result + n + ' '; // 홀수만 출력
+            // ' '을 넣음으로써 더해지는것이 아닌 나열이 발생
+            }
+            n++;
+        }
+        output.innerHTML = result; // 최종 누적 나열값 출력
+    </script>
+</body>
+</html>

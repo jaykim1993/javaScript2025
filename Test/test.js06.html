@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산문제6</title>
+</head>
+<body>
+    <h1>javaScript연습문제</h1>
+    <input id="input1" type="number" placeholder="첫 번째 숫자"/>
+    <input id="input2" type="number" placeholder="두 번째 숫자"/>
+    <button onclick="calc()">계산</button>
+    <h4 id="output"></h4>
+    <!-- javaScript -->
+     <script>
+        // 1. 함수 선언
+        function calc(){
+            // 2. 각 input의 document를 변수로 정의 후 지정
+            let value1 = Number(document.getElementById('input1').value);
+            let value2 = Number(document.getElementById('input2').value);
+            console.log(`첫번째 인풋: ${value1}, 두번째 인풋: ${value2}`);
+            // 3. 출력할 p태그 documunet 변수 지정
+            let result = document.getElementById('output');
+            // 4. 연산
+            // result.innerHTML=`합: ${value1+value2}, 차: ${value1-value2}, 곱: ${value1*value2}, 나누기: ${value1/value2}`;
+            // console.log(`합: ${value1+value2}, 차: ${value1-value2}, 곱: ${value1*value2}, 나누기: ${value1/value2}`)
+            // 구조적으로 보기 좋게 하려면 모두 변수로 지정
+            // 코드의 구조화 => 코드의 간략화이다 (누구나 다 이해되고 가독성 높아 유지/보수 쉽게)
+            let add = value1 + value2;
+            let diff = value1 - value2;
+            let mul = value1 * value2;
+            let did = value1 / value2;
+            console.log(`합: ${add}, 차: ${diff}, 곱: ${mul}, 나누기: ${did}`);
+            result.innerHTML=`합: ${add}, 차: ${diff}, 곱: ${mul}, 나누기: ${did}`;
+        }
+        // 
+        // a && b(and): 조건을 모두 만족할때 True 출력
+        // a || b (or): 조건 중 하나라도 만족할대 True 출력
+        // !a (not): 조건의 부정. True면 False가, False면 True가 출력
+        // 엑셀이 40점 이상이면서 액세스 40점 이상이면서 평균이 60점 이상이면
+        // 컴활 '합격', 아니면 '불합격'
+        let a = 42;
+        let b = 50;
+        let avg = (a+b)/2;
+        let result = a >= 40 && b >= 40 && avg >= 60 ? '합격' : '불합격';
+        console.log(`avg: ${avg}, 합/불 결과: ${result}`);
+     </script>
+</body>
+</html>

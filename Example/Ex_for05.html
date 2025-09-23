@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <title>for문 연습문제</title>
+</head>
+<body>
+    <h3>문제5: 1부터 홀수의 합</h3>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        // 결과를 담을 변수 초기화
+        let result = 0; // 초기값 0으로 인해 숫자로 인식
+        for(let i = 1; i <= 10; i+=2){
+            result += i;
+        }
+        output.innerHTML = `홀수의 합: ${result}`; // 최종 누적 나열값 출력
+    </script>
+</body>
+</html>

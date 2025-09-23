@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date 코어 객체 설명</title>
+</head>
+<body>
+    <script>
+        // 객체(Object): 자바 스크립트에 내장된 함수이다.
+        //               Array, Date, String, Math등이 존재한다. <- (앞단어 전부 대문자)
+        // 객체는 new Date()으로 생성하여 사용한다.
+
+        // 자바스크립트 최초 개설 시점으로 지정된 날자 시간
+            let oneDate = new Date(0); 
+            console.log(oneDate);
+        // 날짜 지정 출력하기
+            let date01 = new Date("aug/08/2024, 14:10:00"); // 지정 날짜 출력1 
+            // (/ 대신 , 사용 가능)
+            let date02 = new Date("2025/08/08/14:20:00"); // 지정 날짜 출력2
+            let date03 = new Date(2024,8); // 지정 날짜 출력3
+            // 월 섹션에 8만 적으면 9로 간다. 0부터 시작하기 때문에! <- 자바스크립트 븅신
+            console.log(date01);
+            console.log(date02);
+            console.log(date03);
+
+        //오늘 날짜 뽑기
+            let today = new Date(); // Date()객체를 new 로 생성해서 today 변수에 지정함
+            console.log(`오늘날짜: ${today}`);
+            
+            // 오늘날짜: Tue Sep 23 2025 11:04:45 GMT+0900 (한국 표준시)
+            let today2 = Date(); // new 생성을 없이 하면
+            // 인스턴스 반환 없이 결과값을 문자열로 반환한다 -> typeof 변수이름: 변수의 타입을 보여줌
+            console.log(today2);
+            console.log(`new 없이 생성된 변수 타입: ${typeof today2}`); // 이렇게 뽑으면 변수 타입: string
+            console.log(`new 통해 생성된 변수 타입: ${typeof today}`); // * new 입력한 변수의 타입: object
+            // object로 출력되게끔 해야 한다
+
+            // 프로퍼티 .use
+            let now = Date.now(); //.now 프로퍼티 사용
+            console.log(now); // UTC 최초 0 기준 현재까지 지난 숫자값 변환: 1758595528003
+            console.log(now/86400000/365); // UTC 최초 0 기준 현재까지 지난 년도수: 55.76
+        
+        // 프로퍼티 .pasre
+            // KST 값을 UTC로 변환
+            let utcToday = Date.parse('jan 2, 1970 00:00:00 UTC');
+            console.log(utcToday); // UTC 최초 시로부터 하루 지난 날짜 UTC 값으로 나옴
+
+        // Date()의 프로퍼티 getter/setter(get~: 출력, set~:수정...)
+            let today03 = new Date();
+            // 오늘 날짜의 년도만 추출하고 싶다
+            let year1 = today03.getFullYear();
+            console.log(`올해: ${year1}`);
+
+                // 날짜와 년도 수정
+                today03.setFullYear(2000);
+                let year2 = today03.getFullYear();
+                console.log(`년도수정 후: ${year2}`);
+
+                // 오늘 날짜의 월을 3월로 변경하여 날짜 출력
+                today03 = new Date();
+                today03.setMonth(2); // 스크립트는 0이 1월... 바보
+                let month = today03.getMonth();
+                console.log(month, today03);
+                console.log(typeof month);
+
+                // 월과 일 수정
+                today03 = new Date();
+                today03.setMonth(11,1);
+                let month2 = today03.getMonth(); // 달 출력 0(1월)~11(12월)
+                let day2 = today03.getDay(); // 요일 출력 0(일요일)~6(토요일)
+                let date2 = today03.getDate(); // 날짜 출력
+                console.log(month2, day2, date2); // 12월, 월요일, 1일
+
+                // 요일 출력
+                let today07 = new Date('2024/12/4');
+                let weekdays = today07.getDay();
+                let wee=['일','월','화','수','목','금','토'];
+                let week = '';
+                    for(let i=0;i<wee.length;i++){
+                    if(i === weekdays){
+                        week = wee[i];
+                        break; // 찾았으면 그냥 나오라 -> 필요 이상의 연산을 막는다.
+                    }
+                }
+                console.log(week);
+                
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 심화 연습 문제</title>
+</head>
+<body>
+    <h3>문제10: 배열 + for문 + if문 문제</h3>
+    <label for="input">3번 출석 배열 입력 (출석,결석,출석,지각,출석): </label>
+    <input type="text" id="input" onkeyup="if(window.event.keyCode==13)scriptFunc()">
+    <button type="button" onclick="scriptFunc()">결과 확인</button>
+    <p id="output"></p>
+    <script>
+        function scriptFunc(){
+            let output = document.getElementById('output');
+            let input = document.getElementById('input').value;
+
+            let inputArray = input.split(',');
+            let result = '';
+            console.log(input); // '출석,결석,출석,지각,출석' 문자열이 들어오고 ,를 포함한 하나의 문자열이다.
+            console.log(inputArray); // ['출석','결석','출석','지각','출석'] 문자 배열이 생성
+        
+            for(let i=0; i<inputArray.length; i++){
+               if(inputArray[i].trim() === '출석'){ // 왼쪽, 오른쪽 공백(문자열로 인식)을 제거하는 함수
+                // 문자열의 경우에만 사용 가능!
+                result += '○,';
+               } else if(inputArray[i].trim() === '결석'){
+                result += 'Χ,';
+               } else {
+                result += '△,';
+               }
+            }
+            result = result.slice(0, -1);
+            console.log(result);
+            output.innerHTML = result; // 값 출력
+        }
+    </script>
+</body>
+</html>

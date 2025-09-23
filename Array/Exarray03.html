@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 기초 연습 문제</title>
+</head>
+<body>
+    <h3>문제4: names 배열 모든 요소 for 문 출력</h3>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        let names = ['Jason','Alice','Candy','Chris'];
+        let result = '';
+        for (let i=0; i<=names.length-1;i++){
+            result += names[i] + ' ';
+        }
+        output.innerHTML = '3번: '+ result;
+    </script>
+</body>
+</html>

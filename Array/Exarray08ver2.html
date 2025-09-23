@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 심화 연습 문제</title>
+</head>
+<body>
+    <h3>문제8: 배열 + for문 + if문 문제</h3>
+    <label for="input">1번 점수 배열 입력 (예: 95,67,80,55,100,72): </label>
+    <input type="text" id="input">
+    <button type="button" onclick="scriptFunc()">결과 확인</button>
+    <p id="output"></p>
+    <script>
+        function scriptFunc(){
+            let output = document.getElementById('output');
+            let input = document.getElementById('input').value;
+            // Number함수를 사용하면 입력되는 값이 이미 문자 이기 때문에 숫자로 변환 불가
+            // -> ,를 삭제하면 숫자로 인식이 가능
+
+            let scores = []; // input을 받을 변수(배열) 선언 및 초기화
+            let result = ''; // 결과 출력 변수 선언 및 초기화
+            console.log(input);
+            // 자바스크립트는 문자가 아니라 문자열(string) 데이터 형식
+            scores = input.split(',').map(Number); // -> ,를 삭제하면 숫자로 인식이 가능
+            // 배열 삭제 후 문자화 "90","80"..
+            // 배열이름.map(Number) => 기존의 배열을 숫자화 하여 다시 배열 만듬
+            // [90,80]...
+
+            console.log(scores);
+            for(let i=0; i<=scores.length-1; i++){
+                let grade = scores[i] >= 90 ? 'A' :
+                            scores[i] >= 80 ? 'B' :
+                            scores[i] >= 70 ? 'C' : 'F';
+                result += scores[i] + '점: ' + grade + ', ';
+            }
+            console.log(result);
+            result = result.slice(0,-2); // 마지막 콤마 제거 위한 함수
+            output.innerHTML = result; // 값 출력
+        }
+    </script>
+</body>
+</html>

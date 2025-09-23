@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적표 (총점과 평균 계산)</title>
+    <style>
+    </style>
+</head>
+<body>
+    <h3>2. 성적표 (총점과 평균 계산)</h3>
+    <p id="output"></p>
+    <script>
+        let output=document.getElementById('output')
+        let score = [
+            [85,90,80],
+            [70,60,75],
+            [95,100,90]
+        ]
+        let arrScore=[];
+        let addTotal = 0;
+        let avrTotal = 0;
+        for(let i=0;i<score.length;i++){
+            for(let j=0;j<score[i].length;j++){
+               addTotal += score[i][j];
+               arrScore += `${score[i][j]}, `;
+            }
+            avrTotal = (addTotal/(score[i].length));
+            output.innerHTML += 
+            `학생 ${[i+1]}: ${arrScore} | 총점: ${addTotal} 평균: ${avrTotal.toFixed(2)} <br/>`;
+            arrScore = [];
+            addTotal = 0;
+            avrTotal = 0;
+        }
+    </script>
+    
+</body>
+</html>

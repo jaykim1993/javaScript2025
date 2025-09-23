@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 반복 출력</title>
+    <style>
+        body{
+            text-align: center;
+
+        }
+        #container{
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid blanchedalmond;
+            border-radius: 30px;
+            width: 1600px;
+            height: 300px;
+            background-color: rgba(255, 235, 205, 0.24);
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: space-around;
+        }
+        p{
+            width: 300px;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 0;
+            text-align: center;
+            background-color: aliceblue;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        img {
+            width: 300px;
+            border-radius: 20px;
+            border: 2px solid aliceblue;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        p:hover,img:hover{
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,0,0,0.8);
+        }
+    </style>
+</head>
+<body>
+    <h1>아름다운 이미지 보고 힐링하세요!</h1>
+    <div id="container"></div>
+
+    <script>
+        let arr = [
+            ["https://picsum.photos/id/1011/400/300", "호수"],
+            ["https://picsum.photos/id/1025/400/300", "강아지"],
+            ["https://picsum.photos/id/1003/400/300", "사슴"],
+            ["https://picsum.photos/id/1035/400/300", "폭포"],
+            ["https://picsum.photos/id/1040/400/300", "성"],
+        ]; // 5X2
+
+        let container = document.getElementById("container");
+        
+        let result='';
+        
+        for (let i = 0; i < arr.length; i++) {
+            for(let j = 0; j<arr[i].length;j++){
+            if(j === 0){
+                result += '<div>'+'<img src="'+ arr[i][j] + '">';
+            }else{result += '<p>'+ arr[i][j]+'</p>'+'</div>';}   
+        }
+        }
+       container.innerHTML = result;
+
+    </script>
+</body>
+</html>

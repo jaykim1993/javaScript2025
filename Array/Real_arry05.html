@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 실습 문제05</title>
+    <style>
+        .red{
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h3>영화 평점 분석</h3>
+    <button type="button" onclick="scriptFunc()">평점 확인</button>
+    <p id="output"></p>
+    
+    <script>
+        function scriptFunc(){
+            let output = document.getElementById('output'); 
+            let movieName = ['어벤져스','인셉션','기생충','라라랜드'];
+            let movieRate = [9,8,10,7];
+            let result = '';
+            console.log(movieName);
+            console.log(movieRate);
+            console.log(result);
+            for(let i=0;i<movieName.length;i++){
+                if(movieRate[i]>=8){
+                    result += `${movieName[i]} : ${movieRate[i]}점  <span class="red">추천</span> <br/>` ;
+                }else result += `${movieName[i]} : ${movieRate[i]}점`;
+            }
+            console.log(result);
+            output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

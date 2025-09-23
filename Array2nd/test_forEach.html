@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forEach() 예제</title>
+</head>
+<body>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        // forEach(): 배열 내 각 요소를 한번씩 순회하는 함수
+        // 배열명.forEach((value(값), index(값위치), array(전체 배열)) => {실행문})
+        // 순서가 중요하다!
+        let arr02 = [10,20,30];
+        arr02.forEach((num, inum, whole)=>{
+            console.log(`${inum}: ${num}`); // index : value
+            console.log(whole); // array 전체 출력
+            output.innerHTML = whole;
+        })
+        
+
+        let arr03 = ['apple','banana','cherry']
+        arr03.forEach((fruits)=>{
+            console.log(fruits);
+        })
+        
+        // 다중 for문을 대체할 수 있으나 선호되지 않는다.
+
+        // map() => 콜백함수,  return(반환=되돌려 받는다)
+        // return값들로 새로운 배열을 생성하여 반환한다.
+        // forEach()와 마찬가지 배열 전용 순회 함수, 다만 return 꼭 받는다. -> 한줄 코딩일때는 return생략 가능하나 비추
+        let arr05=[1,2,3];
+        // return 반환하는 콜백함수 지정 필요 
+        let doubled = arr05.map((value, index, array)=>{
+            console.log(value);
+            return value*10; // map할때 제일 중요!!!!
+        })
+        console.log(`리턴값: ${doubled}`);
+        console.log(doubled[2]); // doubled 라는 새로운 배열로 반환된것이다.
+        
+        // 단어를 대문자로 변경
+        // toUpperCase(): 대문자 변경 메소드
+        // toLowerCase(): 소문자 변경 메소드
+        let word = ['apple','grape','banana'];
+        let upperWord = word.map((value,index,array)=>{
+            return value.toUpperCase();
+        })
+        console.log(upperWord);
+
+        
+    </script>
+</body>
+</html>
