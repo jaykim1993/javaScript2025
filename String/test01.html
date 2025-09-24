@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String</title>
+</head>
+<body>
+    <script>
+        // **문자열(string)**은 **텍스트 데이터를 표현하는 원시 타입(primitive type)**
+        // let str = "hello"는 String 데이터 타입을 갖지만
+        // new로 생성한 객체(Object)는 아니고
+        // Wrapper Object이다.
+        // ** 래퍼 객체(Wrapper Object): 
+            // 자바스크립트에서 기본 자료형(primitive type)을 
+            // 객체(Object)처럼 다룰 수 있게 
+            // 임시로 생성되는 객체를 말한다.
+        // String Object가 사용하는 모든 프로퍼티(=메서드)를 사용할 수 있다.
+        // 이유는 JS가 일반 String을 객체화하여 변형하기 때문이다.
+
+        let str = "Hello";
+        console.log(`데이터 타입: ${typeof str}`);
+        console.log(str[0]); // 배열처럼 index값으로 출력가능
+        console.log(`${str.charAt(0)}`); 
+        // .charAt(0): 0번째 문자 하나 출력하라
+        // console.log(`${str.charAt(1)}`); // 1번째 문자 하나 출력하라
+        // console.log(`${str.charAt(2)}`); // 2번째 문자 하나 출력하라
+        // console.log(`${str.charAt(3)}`); // 3번째 문자 하나 출력하라
+        // console.log(`${str.charAt(4)}`); // 4번째 문자 하나 출력하라
+
+        for(let i=0;i<str.length;i++){
+            console.log(str.charAt(i));
+        }
+        
+        for(let i=0;i<str.length;i++){
+            console.log(str[i]);
+        }
+
+        let str02 = new String('Boys and Girls'); // 데이터 타입: Object
+        console.log(`데이터 타입: ${typeof str02}`);
+        let str03 = "!"; // 데이터 타입: String
+        console.log(`데이터 타입: ${typeof str03}`);
+        // 태그 사용없이 브라우저에 출력하는 명령어 <- 별로 쓸일 없긴함
+        document.write('str02: '+ str02 + '<br/>');
+        document.write('str03: '+ str03 + '<br/>');
+        document.write(str02.charAt(0) + '<br/>'); // B 출력
+        document.write(str02.charAt(4) + '<br/>'); // ' ' 빈칸 출력(공백도 문자로 값을 갖는다)
+        document.write(str02.concat(str03) + '<br/>'); // .concat(): 문자열 한줄로 나열
+        document.write(str02+ str03 + '<br/>'); // .concat(): 문자열 한줄로 나열
+    </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date 기초 연습문제</title>
+</head>
+<body>
+    <button onclick="showYear()">1.현재 연도 출력</button>
+    <p id="outputYear"></p>
+    <button onclick="showDay()">2. 오늘 요일 출력</button>
+    <p id="outputDay"></p>
+    <button onclick="showTime()">3. 현재 시간 출력</button>
+    <p id="outputTime"></p>
+    <button onclick="dayCounter()">4. 특정 날짜까지 남은 일수 계산</button>
+    <p id="outputCounter"></p>
+    <button onclick="printDayAfter()">5. 하루 후, 일주일 후 날짜 출력</button>
+    <p id="outputAfter"></p>
+    <button onclick="compareDate()">6. 날짜 비교</button>
+    <p id="outputCompare"></p>
+    <button onclick="lastDateFinder()">7. 월의 마지막 날 구하기</button>
+    <p id="outputLastDay"></p>
+    <button onclick="dayFinder()">8. 특정 요일 찾기</button>
+    <p id="outputFinder"></p>
+    <button onclick="timegapCal()">9. 시간 차 계산</button>
+    <p id="outputTimegap"></p>
+    <button onclick="messageDay()">10. 요일에 따라 메시지 출력</button>
+    <p id="outputMessage"></p>
+    <script>
+        let today = new Date();
+        // 1. 현재 연도 출력 함수
+        function showYear(){
+            let outputYear = document.getElementById('outputYear');
+
+            let yearToday = today.getFullYear();
+            console.log(`올해는 ${yearToday}년 입니다.`);
+            outputYear.innerHTML = `올해는 ${yearToday}년 입니다.`;
+        }
+
+        // 2. 오늘 요일 출력 함수
+        function showDay(){
+            let outputDay = document.getElementById('outputDay');
+
+            let dayToday = today.getDay();
+            let dayArr = ['일','월','화','수','목','금','토'];
+            let result = '';
+            for(let i=0;i<dayArr.length;i++){
+                if(i===dayToday){
+                    result = dayArr[i];
+                    break;
+                }
+            }
+            console.log(`오늘은 ${result}요일입니다.`);
+            outputDay.innerHTML = `오늘은 ${result}요일입니다.`;
+            
+        }
+            
+        // 3. 현재 시간 출력 함수
+        function showTime(){
+            let outputTime = document.getElementById('outputTime');
+
+            let hoursToday = today.getHours();
+            let minutesToday = today.getMinutes();
+            let secondsToday = today.getSeconds();
+            console.log(`현재 시간: ${hoursToday}:${minutesToday}:${secondsToday}`);
+            
+            function padZero(num){ // 출력 시 0~9분, 초일 경우 08처럼 두 자리로 표현
+                        return num.toString().padStart(2, '0');
+            }
+            console.log(`현재 시간: ${padZero(hoursToday)}:${padZero(minutesToday)}:${padZero(secondsToday)}`);
+            outputTime.innerHTML = `현재 시간: ${padZero(hoursToday)}:${padZero(minutesToday)}:${padZero(secondsToday)}`;
+        }
+
+        // 4. 특정 날짜까지 남은 일수 계산
+        function dayCounter(){
+            let outputCounter = document.getElementById('outputCounter');
+
+            let today = new Date();
+            today.setHours(0,0,0,0); // 오늘 0시 기준
+            console.log(today);
+            let birthday = new Date('2026-01-08');
+            birthday.setHours(0,0,0,0); // 생일 0시 기준
+            console.log(birthday);
+            let dayLeft = Math.ceil((birthday - today)/86400000); 
+            // Date.parse()와 Date.now()를 바로 빼도 되지만, 시차 때문에 소수점이 발생할 수 있다
+            // Math.ceil()을 쓰면 남은 일수를 올림 처리해서 직관적
+            outputCounter.innerHTML = `생일까지 ${dayLeft}일 남았습니다.`;
+        }
+
+        // 5. 하루 후, 일주일 후 날짜 출력
+        function printDayAfter(){
+            let today = new Date();
+            let outputAfter = document.getElementById('outputAfter');
+
+            // 단순히 getDate()+1이나 +7을 쓰면 월이 바뀌는 경우 잘못된 날짜가 나올 수 있음
+            let tomorrow = new Date(today);
+            tomorrow.setDate(today.getDate() + 1);
+
+            let nextWeek = new Date(today);
+            nextWeek.setDate(today.getDate() + 7);
+
+            outputAfter.innerHTML = 
+            `하루 후: ${tomorrow.getFullYear()}년 ${tomorrow.getMonth()+1}월 ${tomorrow.getDate()}일 | 
+            일주일 후: ${nextWeek.getFullYear()}년 ${nextWeek.getMonth()+1}월 ${nextWeek.getDate()}일`;
+        }
+        
+        // 6. 날짜 비교
+        function compareDate(){
+            let outputCompare = document.getElementById('outputCompare');
+            let date1 = new Date('2025/9/23'); // 비교할 날짜 1
+            let date2 = new Date('2025/12/25'); // 비교할 날짜 2
+            let result = ''; // 날짜 비교 결과 변수 선언
+            if(date1.getFullYear()>date2.getFullYear()){ // 날짜 비교 조건문
+                result = date1;
+            } else if(date1.getMonth()>date2.getMonth){
+                result = date1;
+            } else {
+                result = date2;
+            }
+            outputCompare.innerHTML = `미래 날짜는 ${result.getFullYear()}년 ${result.getMonth()+1}월 ${result.getDate()}일 입니다.`;
+
+        }
+        // 7. 월의 마지막 날 구하기
+        function lastDateFinder(){
+            let outputLastDay = document.getElementById('outputLastDay');
+            today = new Date(); // 현재 날짜 구하기
+            console.log(`7번 오늘 날짜: ${today}`)
+            let lastDay = new Date(today.getFullYear(), (today.getMonth()+1), 0).getDate(); // 다음달 0일을 출력하고 날짜 추출
+            console.log(lastDay);
+            outputLastDay.innerHTML = `${today.getMonth()+1}월의 마지막 날은 ${lastDay}일입니다.`;
+        }
+        // 8. 특정 요일 찾기
+        function dayFinder(){
+            let outputFinder = document.getElementById('outputFinder');
+            let today = new Date(); //현재 날짜
+            let date = new Date(today.getFullYear(), today.getMonth(),1); // 현재 년 월의 1일로 변수 지정
+            
+            // 선생님 코딩
+                while(date.getDay() !== 5){
+                    date.setDate(date.getDate()+1);
+                }
+                outputFinder.innerHTML = `첫 번째 금요일은 ${date.getDate()}일입니다.`;
+            // let firstDate = date.getDate(); // 첫날의 날짜: 1
+            // console.log(firstDate);
+            // let daySep = date.getDay(); // 첫날의 요일: 1
+            // console.log(daySep);
+            // // 금요일에 해당하는 가장 빠른 9월의 날짜 찾기 조건문
+            // // 첫날날짜++ 되면서 요일이 금요일에 들어오면 아웃
+            // // 요일 값(0~6) 배열 생성
+            // if(daySep <5){
+            // // 1일이 금요일보다 작을 경우
+            //     for(let i = daySep; i < 5; i++){
+            //         firstDate++;
+            //         daySep++;
+            //     }
+            // }
+            // else if(daySep=6){
+            //     firstDate += 6;
+            // } else { 
+            //     firstDate += 5;
+            // }
+            // outputFinder.innerHTML = `첫 번째 금요일은 ${firstDate}일입니다.`;
+            
+
+        }
+
+        // 9. 시간 차 계산
+        function timegapCal(){
+            // let today = new Date();
+            let outputTimegap = document.getElementById('outputTimegap');
+
+        }
+        // 10. 요일에 따라 메시지 출력
+        function messageDay(){
+            // let today = new Date();
+            let outputMessage = document.getElementById('outputMessage');
+        }
+    </script>
+</body>
+</html>
