@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 객체</title>
+</head>
+<body>
+    <h3>1. 랜덤 이름 뽑기</h3>
+    <button type="button" onclick="randomFC()">뽑기 버튼</button>
+    <p id="output"></p>
+    <script>
+        function randomFC(){
+            let output = document.getElementById('output');
+            names = ['철수','영희','민수','지영','수현'];
+            let result = Math.floor(Math.random()*names.length);
+            output.innerHTML = names[result];
+        }
+    </script>
+</body>
+</html>

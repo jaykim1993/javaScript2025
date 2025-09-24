@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 객체</title>
+    <style>
+    #container { 
+        width: 500px;
+        height: 500px;
+        background-image: url("image/background.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: aliceblue;
+        margin: 0 auto;
+        text-align: center;
+        border-radius: 60px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        padding: 20px;
+    }
+
+    #header {
+        background-color: rgba(0, 200, 255, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        height: 100px;
+        text-shadow: 0 0 5px white;
+        font-size: 30px;
+        color: black; 
+        font-weight: bold;
+        border-radius: 40px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        margin: 20px auto;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    #main p {
+        font-size: 20px;
+        text-shadow: 0 0 5px white;
+        color: black;
+        margin: 60px 0;
+        font-weight: bold;
+    }
+
+    input[type=number] {
+        padding: 10px;
+        width: 200px;
+        font-size: 20px;
+        border-radius: 8px;
+        border: none;
+        text-align: center;
+        
+        outline: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background: yellowgreen;
+        color: white;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        transition: 0.3s;
+    }
+    button:hover:{
+        background: #00c6ff;
+    }
+
+    #output {
+        font-size: 50px;
+        font-weight: bold;
+        min-height: 30px;
+        text-shadow: 0 0 5px white;
+        
+    }
+
+    #footer {
+        color: red;
+        font-size: 30px;
+        font-weight: bold;
+        margin-top: 30px;
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h2>숫자 맞추기 게임</h2>
+        </div>
+        <div id="main">
+            <p>1에서 100사이의 수를 입력하세요</p>
+            <input type="number" id="input" onkeyup="if(window.event.keyCode==13)bingoGame()" placeholder="1부터 100 사이 수 입력">
+            <button type="button" id="checkBtn" onclick="bingoGame()">확인</button>
+            <p id="output"></p>
+        </div>
+        <div id="footer">
+            <p id="timesCounter"></p>
+        </div>
+    </div>
+    <script>
+        let answer = Math.floor(Math.random() * 100 + 1); // 정답
+        console.log(`정답: ${answer}`);
+        let inputArray = [];
+        let counter = 0; // 숫자로 초기화
+
+        function bingoGame(){
+            let output = document.getElementById('output');
+            let timesCounter = document.getElementById('timesCounter');
+            let input = Number(document.getElementById('input').value);
+            let inputBox = document.getElementById('input');
+            let checkBtn = document.getElementById('checkBtn');
+
+            if(!input) return; // 입력 없으면 실행 안 함
+
+            inputArray.push(input);
+            counter++;
+            
+            if (input === answer){
+                output.innerHTML = "🎉 Bingo! 정답입니다!";
+                inputBox.disabled = true;   // 입력창 비활성화
+                checkBtn.disabled = true;   // 버튼 비활성화
+            } else if(input > answer){
+                output.innerHTML = "Down!";
+            } else {
+                output.innerHTML = "Up!";
+            }
+
+            timesCounter.innerHTML = `시도 횟수 : ${counter}회`;
+            inputBox.value = ""; // 입력창 초기화
+            inputBox.focus(); // 다시 입력창에 커서
+        }
+    </script>
+</body>
+</html>

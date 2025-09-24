@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 객체</title>
+</head>
+<body>
+    <script>
+        // ** Math 객체 **
+        // Math 객체는 수학에서 자주 사용하는 상수와 
+        // 함수들을 미리 구현해 놓은 자바스크립트 표준 내장 객체
+        // Math 객체는 다른 전역 객체와는 달리 생성자(constructor)가 
+        // 존재하지 않는다. 
+        // 고로 new Math( )로 객체를 생성하지 않음을 주의하자.
+        let num = 3.1;
+        let num2 = 5.7;
+        let num3 = 30.1234;
+        
+        // 1. 올림: ceil
+        document.write('1.' + '</br>' + '3.1을 올림: ' + Math.ceil(num) + '</br>');
+        document.write('5.7을 올림: ' + Math.ceil(num2) + '</br>'+ '</br>');
+
+        // 2. 내림: floor
+        document.write('2.' + '</br>' + '3.1을 내림: ' + Math.floor(num) + '</br>');
+        document.write('5.7을 내림: ' + Math.floor(num2) + '</br>'+ '</br>');
+
+        // 3. 반올림: round / + toFixed()
+        document.write('3.' + '</br>' + '3.1을 반올림: ' + Math.round(num) + '</br>');
+        document.write('5.7을 반올림 (round 사용): ' + Math.round(num2) + '</br>');
+        document.write('5.7을 반올림 (toFixed 사용): ' + Number(num2.toFixed(0)) + '</br>'+ '</br>');
+        //숫자로 변경하는 Number() 객체 사용 후 출력
+        // round는 소수 자릿수 설정이 안되기에
+        // ** toFixed 사용을 권장 **
+
+        // 4. 절대값: abs
+        document.write('4.' + '</br>' + '-3의 절대값: '+Math.abs(-3)+ '</br>'+ '</br>');
+
+        // 5. 제곱근: sqrt
+        document.write('5.' + '</br>' + '16의 제곱근: '+Math.sqrt(16)+ '</br>'+ '</br>');
+
+        // 6. 난수생성: random
+        document.write('6.' + '</br>' + '0~1 까지의 무작위 출력(소수점 포함): '+Math.random().toFixed(2) + '</br>');
+        document.write('0~100 까지의 무작위 출력(소수점 포함): '+(Math.floor(Math.random()*100)+1) + '</br>'+ '</br>');
+
+         // 7. 최대값, 최소값: max/min
+        document.write('7.' + '</br>' + '-1,2,5,-3 중 최대값: '+ Math.max(-1,2,5,-3)+ '</br>');
+        document.write('-1,2,5,-3 중 최소값: '+ Math.min(-1,2,5,-3));
+    </script>
+</body>
+</html>

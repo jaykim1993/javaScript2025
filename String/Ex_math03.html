@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 객체</title>
+</head>
+<body>
+    <h3>3. 단어 길이 비교하기</h3>
+    <button type="button" onclick="randomFC()">뽑기 버튼</button>
+    <p id="output"></p>
+    <script>
+        function randomFC(){
+            let output = document.getElementById('output');
+            let str1 = 'apple';
+            let str2 = 'watermelon';
+            let result = '';
+            switch(true){
+                case str1.length > str2.length:
+                    result = `더 긴 단어: ${str1} (길이: ${str1.length})`;
+                    break;
+                case str2.length > str1.length:
+                    result = `더 긴 단어: ${str2} (길이: ${str2.length})`;
+                    break;
+                default:
+                    result = `두 단어의 길이는 같습니다.`;
+            }
+            output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 객체</title>
+</head>
+<body>
+    <h3>2. 랜덤 문자열 추출</h3>
+    <button type="button" onclick="randomFC()">뽑기 버튼</button>
+    <p id="output"></p>
+    <script>
+        function randomFC(){
+            let output = document.getElementById('output');
+            let str = 'JavaScript';
+            let result = Math.floor(Math.random()*str.length);
+            output.innerHTML = str[result];
+        }
+    </script>
+</body>
+</html>
