@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>보충수업01</title>
+</head>
+<body>
+    <p id="output1"></p>
+    <input type="text" id="input2" onkeyup="if(window.event.keyCode==13)function2()" placeholder="2번 약수 구하기">
+    <p id="output2"></p>
+    <p id="output3"></p>
+    <input type="text" id="input4" onkeyup="if(window.event.keyCode==13)function4()" placeholder="4번 7의 배수 세기">
+    <p id="output4"></p>
+    <input type="text" id="input5" onkeyup="if(window.event.keyCode==13)function5()" placeholder="5번 소수 판별">
+    <p id="output5"></p>
+    <p id="output6"></p>
+    <p id="output7"></p>
+    <script>
+        // 1번 1~50 중 4의 배수의 합
+        let output1 = document.getElementById('output1');
+        let sum = 0;
+        for(let i =0;i<50;i++){
+            if(i%4==0){
+                sum += i;
+            }
+        }
+        output1.innerHTML='1번 답: '+sum + '<br/>'+ '<br/>';
+
+        // 2번 약수 찾기
+        function function2(){
+            let output2 = document.getElementById('output2');
+            let input2 = Number(document.getElementById('input2').value);
+            let result = `${input2}의 약수: `;
+            for(let i=0;i<=input2;i++){
+                if(input2 % i == 0){
+                    result += i + ', ';
+                }
+            }
+            output2.innerHTML = `2번 답: ${result}`;
+        }
+
+        // 3번 1~100 사이 모든 짝수 합과 홀수 합 동시에 구하기
+        let output3 = document.getElementById('output3');
+        let resultOdd = 0;
+        let resultEven = 0;
+        for(let i=0;i<=100;i++){
+            if(i % 2 == 0){
+                resultEven+=i;
+            }else{
+                resultOdd+=i;
+            }
+        }
+        output3.innerHTML=`3번답: 1~100 까지 짝수 합: ${resultEven}, 홀수 합: ${resultOdd}`;
+
+        // 4번 1~n 사이에서 7의 배수 개수 세기
+        function function4(){
+            let output4 = document.getElementById('output4');
+            let input4 = Number(document.getElementById('input4').value);
+            let result = 0;
+            for(let i=1;i<=input4;i++){
+                if((i % 7) == 0){
+                    result += 1;
+                }
+            }
+            console.log(result);
+            output4.innerHTML = `4번 답: 1부터 ${input4} 사이에서 7의 배수 갯수: ${result}`;
+        }
+
+        // 5번 사용자 입력 숫자가 소수인지 아닌지 판별
+        function function5(){
+            let output5 = document.getElementById('output5');
+            let input5 = Number(document.getElementById('input5').value);
+            let result = 0;
+            for(let i=2; i<input5; i++){
+                if(input5 % i == 0){
+                    result += 1;
+                }
+            } console.log(result);
+            if(result == 0){
+                result = `소수입니다`;
+            } else {
+                result = `소수가 아닙니다`;
+            }
+            console.log(result);
+            output5.innerHTML = `5번 답: ${result}`;
+        }
+
+        // 6번 숫자 뒤집기
+        let output6 = document.getElementById('output6');
+        let num = 12345;
+        let numJ = num
+        let value = 0;
+        for(let i = 10; i<num; i=i*10){
+            
+        }
+
+        // 7번 1~n까지 숫자 중 3 또는 5의 배수 합 구하기
+        let output7 = document.getElementById('output7');
+
+
+        // 8번 숫자 배열에서 짝수만 새로운 배열로 저장
+        let output8 = document.getElementById('output8');
+
+
+        // 9번 문자열 안에 모음(a,e,i,o,u) 개수 세기
+    </script>
+</body>
+</html>
