@@ -88,12 +88,16 @@
 
         // 6번 숫자 뒤집기
         let output6 = document.getElementById('output6');
-        let num = 12345;
-        let numJ = num
-        let value = 0;
-        for(let i = 10; i<num; i=i*10){
-            
+        let num = 12345; // 타입: 숫자
+        let lastNum = 0; // 타입: 숫자
+        let result = ''; // 타입: 문자열
+        for(let i = 0; num > 0; i++){
+            lastNum = num % 10; // 마지막 숫자 구하기
+            num = Math.floor(num / 10); // 소수점 버리기
+            result += lastNum; // 문자열에 숫자값 누적?
         }
+        console.log(result);
+        output6.innerHTML =  `6번 답: ${result}`;
 
         // 7번 1~n까지 숫자 중 3 또는 5의 배수 합 구하기
         let output7 = document.getElementById('output7');
