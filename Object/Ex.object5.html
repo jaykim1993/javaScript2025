@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object 배열 (연습문제 4)</title>
+</head>
+<body>
+    <h3>2. 쇼핑몰 장바구니 총액 계산</h3>
+    <p id="price"></p>
+    <b id="total"></b>
+    <script>
+        
+        // Object 배열 만들기
+        // id: 배열 내 가각의 Object를 구별하는 키.
+        // DB형식으로 만들었음
+        let price = document.getElementById('price');
+        let total = document.getElementById('total');
+        let cart = [
+            {id: 1, name: '노트북', price: 1000000, quantity: 1},
+            {id: 2, name: '마우스', price: 20000, quantity: 2},
+            {id: 3, name: '키보드', price: 50000, quantity: 1},
+        ]
+        let indiviPrice = '';
+        let totalPrice = 0;
+        for(let i=0;i<cart.length;i++){
+            let c = cart;
+            indiviPrice += 
+                `${c[i].name} 금액: ${(c[i].price*c[i].quantity).toLocaleString('ko-kr')}원<br/>`;
+
+            totalPrice += 
+                c[i].price*c[i].quantity;
+        }
+        price.innerHTML = indiviPrice;
+        total.innerHTML = '장바구니 총 금액: '+ totalPrice.toLocaleString('ko-kr') + '원';
+    </script>
+</body>
+</html>

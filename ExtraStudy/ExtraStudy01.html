@@ -15,7 +15,10 @@
     <input type="text" id="input5" onkeyup="if(window.event.keyCode==13)function5()" placeholder="5번 소수 판별">
     <p id="output5"></p>
     <p id="output6"></p>
+    <input type="text" id="input7" onkeyup="if(window.event.keyCode==13)function7()" placeholder="7번 3 또는 5의 배수의 합">
     <p id="output7"></p>
+    <input type="text" id="input8" onkeyup="if(window.event.keyCode==13)function8()" placeholder="8번 짝수 배열 생성">
+    <p id="output8"></p>
     <script>
         // 1번 1~50 중 4의 배수의 합
         let output1 = document.getElementById('output1');
@@ -100,12 +103,38 @@
         output6.innerHTML =  `6번 답: ${result}`;
 
         // 7번 1~n까지 숫자 중 3 또는 5의 배수 합 구하기
-        let output7 = document.getElementById('output7');
+        function function7(){
+            let output7 = document.getElementById('output7');
+            let input7 = Number(document.getElementById('input7').value);
 
+            let value=0; // 결과 변수 선언 및 초기값 할당
+            for(let i=1;i<=input7;i++){
+                if(i%3==0||i%5==0){
+                    value += i;
+                }
+            }
+            console.log(value); // 3과 5의 배수 출력 확인
+
+        output7.innerHTML = `7번 답: ${value}`;
+        }
 
         // 8번 숫자 배열에서 짝수만 새로운 배열로 저장
-        let output8 = document.getElementById('output8');
+        function function8(){
+            let output8 = document.getElementById('output8');
+            let input8 = document.getElementById('input8').value;
 
+            let arr = input8.split(","); // 입력받은 문자열 배열로 arr변수에 할당
+
+            let arrEven = []; // 입력받은 값 중 짝수만 할당 받기
+            for(let i=0;i<arr.length;i++){
+                if(arr[i]%2==0){
+                    arrEven.push(arr[i]);
+                }
+            }
+            console.log(arrEven); // 짝수만 나오는 배열 확인
+
+        output8.innerHTML = `8번 답: [${arrEven}]`;
+        }
 
         // 9번 문자열 안에 모음(a,e,i,o,u) 개수 세기
     </script>

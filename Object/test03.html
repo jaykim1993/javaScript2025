@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object 배열 (연습문제 3)</title>
+</head>
+<body>
+    <script>
+        
+        // Object 배열 만들기
+        // id: 배열 내 가각의 Object를 구별하는 키.
+        // DB형식으로 만들었음
+        let cart = [
+            {id: 1, name: "노트북", price: 1000, quantity: 1}, // index: 0
+            {id: 2, name: "마우스", price: 50, quantity: 2} // index: 1
+        ];
+        let totalPrice = 0
+        for(let i=0;i<cart.length;i++){
+            totalPrice += (cart[i].price*cart[i].quantity);
+        }
+        console.log(`장바구니 총 금액: ${totalPrice}원`);
+    </script>
+</body>
+</html>

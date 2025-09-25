@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cafe Kiosk</title>
+<style>
+  body { font-family: Arial, sans-serif; }
+  .wrap { max-width: 800px; margin: auto; text-align: center; }
+  .order_menu { display: flex; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+  .order_menu button { margin: 5px; padding: 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 10px; background: #f9f9f9; }
+  .order_menu img { width: 50px; height: 50px; }
+  .popup { display: none; position: fixed; right: 20px; top: 50px; width: 300px; background: #fff; border: 1px solid #ccc; padding: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2); }
+  .popup.show { display: block; }
+  .order_list ul { list-style: none; padding: 0; margin: 0; }
+  .order_list li { margin-bottom: 10px; }
+  .order_list button { margin: 0 2px; }
+  .order_result { margin-top: 10px; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <h2 id="head">원하시는 음료를 선택해 주세요</h2>
+  <p>Please choose the drink you want.</p>
+  <h2>MENU</h2>
+
+  <div class="order_menu" id="menubox"></div>
+
+  <div class="popup" id="popup">
+    <div class="order_list">
+      <h2>주문내역</h2>
+      <div id="orderbox"></div>
+    </div>
+    <div class="order_result">
+      <h2>총 주문금액 : <span id="pay">0원</span></h2>
+      <button id="btn">결제하기</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 메뉴 데이터
+  let menus = [
+    { id: 0, name: '아메리카노', type: 'HOT', price: 1000, quantity: 0, icon:'hot.png'},
+    { id: 1, name: '아메리카노', type: 'ICE', price: 1300, quantity: 0, icon:'ice.png'},
+    { id: 2, name: '바닐라라떼', type: 'HOT', price: 2500, quantity: 0, icon:'hot.png'},
+    { id: 3, name: '바닐라라떼', type: 'ICE', price: 2800, quantity: 0, icon:'ice.png'},
+    { id: 4, name: '연유라떼', type: 'HOT', price: 2500, quantity: 0, icon:'hot.png'},
+    { id: 5, name: '연유라떼', type: 'ICE', price: 2800, quantity: 0, icon:'ice.png'},
+    { id: 6, name: '카라멜마끼아또', type: 'HOT', price: 2800, quantity: 0, icon:'hot.png'},
+    { id: 7, name: '카라멜마끼아또', type: 'ICE', price: 3000, quantity: 0, icon:'ice.png'},
+    { id: 8, name: '카페모카', type: 'HOT', price: 3000, quantity: 0, icon:'hot.png'},
+    { id: 9, name: '카페모카', type: 'ICE', price: 3300, quantity: 0, icon:'ice.png'},
+    { id: 10, name: '딥카페라테', type: 'HOT', price: 3400, quantity: 0, icon:'hot.png'},
+    { id: 11, name: '딥카페라테', type: 'ICE', price: 3700, quantity: 0, icon:'ice.png'}
+  ];
+
+  const menubox = document.getElementById('menubox');
+  const popup = document.getElementById('popup');
+  const orderbox = document.getElementById('orderbox');
+  const pay = document.getElementById('pay');
+
+  // 메뉴 버튼 생성
+  menus.forEach((menu, i) => {
+    const btn = document.createElement('button');
+    btn.innerHTML = `<img src="${menu.icon}"><br>${menu.name}-${menu.type}<br>${menu.price.toLocaleString()}원`;
+    btn.addEventListener('click', () => increase(i));
+    menubox.appendChild(btn);
+  });
+
+  // 수량 증가
+  function increase(i) {
+    if (menus[i]) {
+      menus[i].quantity++;
+      updateOrder();
+    }
+  }
+
+  // 수량 감소
+  function decrease(i) {
+    if (menus[i] && menus[i].quantity > 0) {
+      menus[i].quantity--;
+      updateOrder();
+    }
+  }
+
+  // 선택 취소
+  function remove(i) {
+    if (menus[i]) {
+      menus[i].quantity = 0;
+      updateOrder();
+    }
+  }
+
+  // 주문내역 업데이트
+  function updateOrder() {
+    let totalPay = 0;
+    orderbox.innerHTML = '';
+    
+    menus.forEach((menu, i) => {
+      if (menu.quantity > 0) {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          ${menu.name}-${menu.type} | ${menu.quantity}개 | ${(menu.price*menu.quantity).toLocaleString()}원
+          <p>
+            <button onclick="increase(${i})">+</button>
+            <button onclick="decrease(${i})">-</button>
+            <button onclick="remove(${i})">선택취소</button>
+          </p>
+        `;
+        orderbox.appendChild(li);
+        totalPay += menu.price * menu.quantity;
+      }
+    });
+
+    pay.textContent = totalPay.toLocaleString() + '원';
+
+    // 팝업 표시 여부
+    if (totalPay > 0) popup.classList.add('show');
+    else popup.classList.remove('show');
+  }
+</script>
+
+</body>
+</html>

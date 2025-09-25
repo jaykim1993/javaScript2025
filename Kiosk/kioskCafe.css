@@ -1,0 +1,121 @@
+@charset "UTF-8";
+*{
+    box-sizing: border-box;
+    list-style: none;
+    /* dl, dt, dd 기본으로 여백을 가짐 */
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin-top: 100px;
+    background-color: rgb(59, 59, 59);
+    color: #000000;
+    
+}
+.wrap{
+    width: 900px;
+    height: 730px;
+    text-align: left;
+    font-family: sans-serif;
+    margin: 0 auto;
+    background-color: rgb(133, 236, 133);
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    border: 5px solid black;
+}
+.order_menu{
+    
+    width: 100%;
+    height: 340px;
+    overflow-y: scroll;
+}
+#head, p, h2{
+    padding-left: 10px;
+    
+}
+#menubox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 12px;
+    padding: 11px;
+}
+.click{
+    border: none;
+    background-color: inherit;
+    width: 195px;
+    height: 158px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 540;
+}
+
+.click:hover img{
+    box-shadow: 0 0 10px rgba(0,0,0,0.9);
+}
+.click:hover p{
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+img {
+    width: 90px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(73, 73, 73);
+    margin-bottom: 10px;
+    margin-top: 10px;
+    
+}
+.popup {
+    margin-top: 20px;
+    width: 100%;
+    height: 240px;
+    border-radius: 30px;
+}
+#orderbox{
+    height: 128px;
+    overflow-y: scroll;
+    margin: 10px 0;
+}
+.orlist{
+    font-size: 13px;
+    font-weight: 500;
+}
+.orlist button:hover, #btn:hover{
+    color: #ffffff;
+    background-color: chocolate;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+li{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-left: 10px;
+}
+.orlist button, #btn{
+    margin: 5px;
+    padding: 5px 10px;
+    border: 2px solid rgba(128, 128, 128, 0.356);
+    border-radius: 5px;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+}
+.order_result{
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.order_result button{
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+

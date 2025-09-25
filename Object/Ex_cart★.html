@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니 (object 배열 심화 문제)</title>
+    <style>
+        body{
+            font-family: sans-serif;
+            margin: 30px;
+            background-color: #9f9f9f;
+        }
+        h2{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table{
+            width: 700px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        th,td{
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th{
+            background-color: #4caf50;
+            color: white;
+            font-size: 18px;
+        }
+        button{
+            margin: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+        .plus{
+            background-color: #4caf50;
+        }
+        .minus{
+            background-color: #f39c12;
+        }
+        .remove{
+            background-color: #e74c3c;
+        }
+        #footer{
+            width: 700px;
+            
+            margin: 0 auto;
+            text-align: right;
+        }
+        #total{
+            margin-right: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>장바구니</h2>
+    <table id="cartTable">
+            <thead>
+                <tr>
+                    <th>상품명</th>
+                    <th>가격</th>
+                    <th>수량</th>
+                    <th>합계</th>
+                    <th>조작</th>
+                </tr>
+            </thead>
+        <tbody id="cartBody">
+                <!-- innerHTML로 테이블 만들어 넣기 -->
+        </tbody>
+    </table>
+
+    <div id="footer">
+        <p id="total">
+        </p>
+    </div>
+
+    <script>
+        // 장바구니 구현 데이터
+            let cart = 
+                    [
+                    {id: 1, name: '노트북', price: 1000000, quantity: 1},
+                    {id: 2, name: '마우스', price: 20000, quantity: 5},
+                    {id: 3, name: '키보드', price: 50000, quantity: 2}
+                ]
+
+        // #cartBody 에 들어가는 테이블 구현
+            function renderCart(){
+                let cartBody = document.getElementById('cartBody');
+                let total = document.getElementById('total');
+                let result = '';
+
+            // 총 금액 for 문 돌리기
+                
+                let totalPrice = 0;
+                let c = cart;
+                for(let i=0;i<cart.length;i++){
+                    totalPrice += 
+                    c[i].price*c[i].quantity;
+                }
+
+            // cart 배열 오브젝트 각 항목을 테이블의 각 <tr><td>안에 넣어야 함(누적)
+                                // i=0 일 때 첫번째 버튼..
+                                // function(값)을 넣는걸 매개변수 함수라 한다.
+                                // onclick: 버튼을 클릭하는 사건이 일어나면
+                                // 함수 출력
+                for(let i=0;i<cart.length;i++){
+                    result +=
+                        `<tr>
+                            <td>${cart[i].name}</td>
+                            <td>${cart[i].price.toLocaleString('ko-kr')}원</td>
+                            <td>${cart[i].quantity}</td>
+                            <td>${(c[i].price*c[i].quantity).toLocaleString('ko-kr')}원</td>
+                            <td>
+                                <button class="plus" onclick="increase(${i})">+</button>
+                                <button class="minus" onclick="decrease(${i})">-</button>
+                                <button class="remove" onclick="remove(${i})">x</button>
+                            </td>
+                        </tr>`;
+                    }
+                cartBody.innerHTML = result;
+                total.innerHTML = '총 금액: '+ totalPrice.toLocaleString('ko-kr') + '원';
+            }
+            renderCart(); // *** 함수 출력을 하지 않으면 화면에 나오지 않는다 ***
+
+
+        // 버튼 조작 함수
+            // 매개변수를 지정한 함수는 반드시 함수 작성 시 매개변수 지정해야 함
+            // 매개변수 이름은 알아서 작명 -> indexNum
+            function increase(indexNum){
+                if(cart[indexNum].quantity < 10){
+                        cart[indexNum].quantity++;
+                } else {
+                        alert('수량은 10개까지만 가능합니다');
+                }
+                renderCart(); // *** 화면을 갱신하지 않으면 아무일도 안 일어난것처럼 보인다 ***
+            }
+            function decrease(indexNum){
+                if(cart[indexNum].quantity > 0){
+                    cart[indexNum].quantity--;
+                } else {
+                    alert('수량 0개 이하는 불가합니다');
+                }
+                renderCart();
+            }
+            function remove(indexNum){
+                cart.splice(indexNum,1); // .splice(시작할 인덱스번호, 제거할 요소의 개수)
+                // 메모리에서 데이터를 삭제 실제로 함으로 효율을 높인다.
+                // 내장 함수이기 때문에 불러와서 사용함으로 속도 자체가 빠르다.
+                renderCart();
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Kiosk</title>
+    <link rel="stylesheet" href="kioskCafe.css">
+</head>
+<body>
+    <div class="wrap">
+        <h2 id="head">원하시는 음료를 선택해 주세요</h2>
+        <p>Please choose the drink you want.</p>
+        <h2 id="head">MENU</h2>
+      <div class="order_menu">
+        <div class="section1">
+          <div id="menubox"></div>
+        </div>
+      </div>
+      
+      <div class="popup">
+        <div class="order_list">
+          
+            <h2>주문내역</h2>
+            <div id="orderbox"></div>
+          
+        </div>
+        <div class="order_result">
+            <h2>총 주문금액 : <span id="pay"></span></h2>
+            <button id="btn">결제하기</button>
+        </div>
+      </div>
+    
+
+    <script>
+      // 메뉴 데이터
+        let menus = [
+            { id: 0, name: '아메리카노', type: 'HOT', price: 1000,quantity:0, icon:'/Kiosk/images/hot.png'},
+            { id: 1, name: '아메리카노', type: 'ICE', price: 1300,quantity:0, icon:'/Kiosk/images/ice.png' },
+            { id: 2, name: '바닐라라떼', type: 'HOT', price: 2500,quantity:0, icon:'/Kiosk/images/hot.png' },
+            { id: 3, name: '바닐라라떼', type: 'ICE', price: 2800,quantity:0, icon:'/Kiosk/images/ice.png' },
+            { id: 4, name: '연유라떼', type: 'HOT', price: 2500,quantity:0, icon:'/Kiosk/images/hot.png' },
+            { id: 5, name: '연유라떼', type: 'ICE', price: 2800,quantity:0, icon:'/Kiosk/images/ice.png' },
+            { id: 6, name: '카라멜마끼아또', type: 'HOT', price: 2800,quantity:0, icon:'/Kiosk/images/hot.png' },
+            { id: 7, name: '카라멜마끼아또', type: 'ICE', price: 3000,quantity:0, icon:'/Kiosk/images/ice.png' },
+            { id: 8, name: '카페모카', type: 'HOT', price: 3000,quantity:0, icon:'/Kiosk/images/hot.png' },
+            { id: 9, name: '카페모카', type: 'ICE', price: 3300,quantity:0, icon:'/Kiosk/images/ice.png' },
+            { id: 10, name: '딥카페라테', type: 'HOT', price: 3400,quantity:0, icon:'/Kiosk/images/hot.png' },
+            { id: 11, name: '딥카페라테', type: 'ICE', price: 3700,quantity:0, icon:'/Kiosk/images/ice.png' },
+        ];
+      
+      // 본문 메뉴 불러오기 + 아이콘 클릭 시 메뉴 수량 증가
+        let menubox = document.getElementById('menubox');
+        let icon = '';
+      
+        for (let i = 0; i < menus.length; i++) {
+              icon +=  
+                `<button class="click" onclick="increase(${i})">
+                <img src = "${menus[i].icon}"> <br/> 
+                <p>${menus[i].name} - ${menus[i].type}</p>
+                <p>${menus[i].price.toLocaleString('ko-kr')}원</p>
+                </button>`;
+          }
+        console.log(icon);
+        menubox.innerHTML = icon;
+      
+      // 클릭 시 수량, 가격 변경 함수
+        function clickFC() {
+        let orderbox = document.getElementById('orderbox');
+        let pay = document.getElementById('pay');
+        let result = '<ul>';
+        let totalPay = 0;
+        let hasOrder = 0;
+
+        for (let i=0; i<menus.length; i++) {
+          if (menus[i].quantity > 0) {
+            hasOrder = 1;
+            result +=
+            `
+              <li class="orlist">
+                ${menus[i].name}-${menus[i].type} | 
+                ${menus[i].quantity}개 | 
+                ${(menus[i].price*menus[i].quantity).toLocaleString()}원
+                <p><button onclick="increase(${i})">+</button>
+                <button onclick="decrease(${i})">-</button>
+                <button onclick="remove(${i})">선택취소</button></p>
+              </li>
+            <hr color="#333">`;
+            totalPay += menus[i].price * menus[i].quantity;
+          }
+        }
+        result += '</ul>';
+        orderbox.innerHTML = result;
+        pay.innerHTML = totalPay.toLocaleString('ko-kr')+'원';
+
+     
+      }
+      clickFC();
+            // 버튼 조작 시 수량 변경 함수
+      function increase(indexNum){
+            if(menus[indexNum].quantity < 10){
+                        menus[indexNum].quantity++;
+            } else {
+                    alert('수량은 10개까지만 가능합니다');
+                }
+            clickFC(); 
+        }
+        function decrease(indexNum){
+                menus[indexNum].quantity--;
+            clickFC();
+        }
+        function remove(indexNum){
+            menus[indexNum].quantity = 0;
+            clickFC();
+        }
+            
+    </script>
+</body>
+</html>

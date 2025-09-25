@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Book 객체</h1>
+    <hr>
+    <div id="view"></div>
+    <script>
+        // *** DOM(Document Object Model) ***
+        // 웹 브라우저가 HTML 문서(혹은 XML)를 객체 형태로 표현한 모델
+
+        // Object 생성 방법
+            // let 변수이름 = {title: 값1, name: 값2, price: 값3}
+            // title => key 라고 생각하면됨
+            // 값 => value 라고 생각하면됨
+            // 우리가 만든 변수 =  book 
+            // book 안의 key:value 존재한다.
+        let book = {
+                title:'JavaScript',
+                author:'홍길동',
+                page:500,
+                price:15000,
+                // book 객체 function()의 값을 입력할 수 있다.
+                info: function(){
+                    // alert("문자"): 브라우저에서 메시지를 보여주는 창
+                        // 양식이 루즈해서 요즘은 모달창으로 만들어서 쓴다.
+
+                    // 생성자 함수 this:
+                        // 그 생성자 함수로부터 만들어지는 새 객체(인스턴스)를 가리킴.
+                        alert(`${this.title} 책의 분량은 ${this.page}쪽입니다.`)
+                }
+            }
+            // alert 함수 호출방법
+            book.info();
+
+        //콘솔 찍으면 밑에처럼 뜸 == 망고DB가 이런식으로 저장된다고하심
+        //제이슨 형식 저장법?
+        console.log(book); 
+            // ▼ {title: 'JavaScript', author: '홍길동', page: 500, price: 15000}
+            //   author: "홍길동"
+            //   page: 500
+            //   price: 15000
+            //   title: "JavaScript"
+            // ▶ [[Prototype]]: Object
+
+        //Book 객체에 title(프로퍼티)로 접근하는 방법
+        //객체이름.프로퍼티이름 => book.title
+        console.log(book.title); //JavaScript
+        console.log(book.page); //500
+
+        // DOM: HTML 태그에 javaScript가 접근하기위한 방법
+        // getElementById: id이름을 가진 태그연결
+        let bookInfo = document.getElementById('view');
+            // .querySelector: id면 '#view', class면 '.view'
+                // let BookInfo = document.querySelector('view');
+            // .getElementsByClassName: class 이름을 가진 태그 연결
+                // let BookInfo = document.getElementsByClassName('view');
+        // 문자만 출력이기에 .textContent사용으로 출력해보자
+        bookInfo.textContent = `${book.title}의 저자는 ${book.author}이고,
+        책의 총 페이지 수는 ${book.page}이고, 금액은 ${book.price}이다. `;
+
+    </script>
+</body>
+</html>
