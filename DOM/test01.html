@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM(Document Object Model)</title>
+</head>
+<body>
+    <!-- *** DOM(Document Object Model) ***
+     브라우저가 HTML 문서(혹은 XML)를 객체 형태로 표현한 모델-->
+        <!-- # 1 -->
+     <!-- 
+        h1: 요소, 
+        id: 속성 노드, 
+        '안녕하세요': 텍스트 노드
+       -->
+     <h1 id="title">안녕하세요</h1>
+        <!-- # 2 -->
+     <img id="photo" src="/DOM/img/ice.png" width="100">
+        <!-- # 3 -->
+     <p id="msg">이 글자는 파란색으로 변경됩니다.</p>
+        <!-- # 4 -->
+     <ul id="list">
+        <!-- # 5 -->
+        <li id="item">기존 항목</li>
+     </ul>
+     <!-- addEvenListener()적용 , onclick 불필요 -->
+     <button id="btn">누르세요</button>
+     <p id="p1">this is a paragraph</p>
+     <input type="button" onclick="changeStyle()" value="클릭">
+
+     <!-- 자바스크립트에 들어가는 함수 -->
+     <!-- a 태그를 통해 함수로 들어가는 방법 -->
+     <!-- 원래는 주소 url이 들어가나 지금은 함수로 들어간다 -->
+     <a href="javaScript:add()">보여주기</a>
+     <a href="javaScript:remove()">감추기</a>
+
+
+
+    <script>
+        // 프론트엔드 개발자가 좀 더 편하게 개발할 수 있게 함
+        // DOM은 HTML 문서에 접근하는 인터페이스이다.
+
+
+        // # 1. '안녕하세요' => 'DOM 조작 성공'으로 변경
+        let title02 = document.getElementById('title');
+        // title02 = "DOM 조작 성공"; ?
+        // 변수에 값을 지정하고 텍스트 노드에 접근하지 않았기 때문에
+        // h1태그의 텍스트 내용이 변경되지 않았다.
+        title02.textContent="DOM 조작 성공";
+        console.log(title02);
+
+
+        // # 2. 이미지를 ice => hot으로 변경
+        // id - src 속성으로 접근해서 수정 요망
+        let img01 = document.getElementById('photo');
+        // .setAttribute를 윗줄에 직접 따도 되나 가독성 이슈로 분리하길 추천!
+        img01.setAttribute("src","/DOM/img/hot.png");
+
+
+        // # 3. 스타일 변경 CSS
+        let pColor = document.getElementById('msg');
+        pColor.style.color = "blue";
+        pColor.style.fontSize = "30px";
+
+        // # 4. 요소(태그) 추가
+        // 1. craeatElement("태그이름")
+        // 2. 텍스트 노드접근 = "새 항목"
+        // 3. 부모요소의 DOM 접근
+        // 4. appendChild(1번의 변수이름)
+        let ulListLi = document.createElement("li");
+        // li 요소 추가 => appendChild(요소이름)
+        ulListLi.textContent = "새 항목";
+        document.getElementById('list').appendChild(ulListLi);
+        
+
+        // # 5. 요소 삭제
+        document.querySelector("#item").remove();
+
+
+
+        // addEventListener('click', ()=> {})
+        // 장점: 태그에 직접 onclick 정의하지 않아도 됨
+        // for문 등 조건물을 통해 대량으로 접근 가능
+        let btn = document.querySelector("#btn");
+        btn.addEventListener('click',()=>{
+            alert('연습');
+        })
+
+        // 기존의 onclick 함수 호출 방식(addEventListener와 비교)
+        function changeStyle(){
+            document.querySelector('#p1').style.color='red';
+        }
+
+
+        // <a href = "javaScript:함수이름()">함수호출하기</a>
+        // href 속성을 통해 직접 자바스크립트로 연동
+        function add(){
+            // 테이블 생성 DOM으로 하기
+            let tables = document.createElement('table');
+            // 생성한 테이블에 id="taget" 지정
+            tables.setAttribute('id','taget');
+            // tr,td,text 노드 생성
+            let trs = document.createElement('tr');
+            let tds = document.createElement('td');
+            let text = document.createTextNode('나는 수업중');
+            // table에 자식 요소 노드를 추가하기
+            tables.appendChild(trs).appendChild(tds).appendChild(text);
+            // 기존의 html 문서안에서 body요소 노드 tables를 연결
+            document.body.appendChild(tables);
+        }
+        function remove(){
+            let taget = document.querySelector('#taget').remove();
+        }
+    </script>
+</body>
+</html>

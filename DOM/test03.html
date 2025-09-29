@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 기초문제</title>
+</head>
+<body>
+    
+    <ul>
+        <li class="fruit">사과</li>
+        <li class="fruit">바나나</li>
+        <li class="fruit">체리</li>
+    </ul>
+
+    <ul id="list"></ul>
+
+    <ul>
+        <li id="delete">삭제될 항목</li>
+        <li id="leave">남길 항목</li>
+    </ul>
+
+    <div id="content"></div>
+
+    
+
+    <script>
+        // TagName(), ClassName() => HTMLCollection
+            // DOM이 바뀌면 자동 반영, 배열 메서드 안 먹음
+        // querySelectorAll(), childNodes 등 => Nodelist
+            // forEach 가능
+
+        // 5.
+        let fruit = document.getElementsByClassName('fruit');
+        for(let i=0;i<fruit.length;i++){
+            fruit[i].textContent = '과일';
+        }
+
+        // 6. 
+            // 새로 입력할 변수명 = craeatElement("태그 종류")
+            // 입력될 변수에 값 지정(문자) = "새 항목"
+            // 부모요소의 DOM 접근.appendChild(1번의 변수이름)
+        let newList = document.createElement("li");
+        newList.textContent = '새 항목';
+        document.getElementById('list').appendChild(newList);
+
+        // 7.
+        document.getElementById('delete').remove();
+
+        // 8.
+        let newP = document.createElement('p');
+        newP.textContent = 'DOM 연습';
+        document.getElementById('content').appendChild(newP);
+    </script>
+</body>
+</html>

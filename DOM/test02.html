@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 기초문제</title>
+</head>
+<body>
+    <h4 id="text">안녕하세요</h4>
+    <div class="box">box1</div>
+    <div class="box">box2</div>
+    <div class="box">box3</div>
+    <hr>
+    <p class="p2">첫 번째 문장</p>
+    <p class="p2">두 번째 문장</p>
+
+
+    <ul>
+        <li>사과</li>
+        <li>바나나</li>
+        <li>체리</li>
+    </ul>
+    
+
+    <script>
+        // TagName(), ClassName() => HTMLCollection
+            // DOM이 바뀌면 자동 반영, 배열 메서드 안 먹음
+        // querySelectorAll(), childNodes 등 => Nodelist
+            // forEasch 가능
+
+
+
+        // 1.
+        let text1 = document.getElementById('text');
+        text1.textContent='DOM 실습 중급';
+        console.log(text1);
+
+        // 2.
+        let boxs = document.getElementsByClassName("box");
+        // box클래스를 가진 모든 요소를 선택해서 Nodelist(유사배열)
+        console.log(boxs);
+        // HTMLCollection(3) [div.box, div.box, div.box]
+        // 노드 리스트를 실 배열로 바꾸기
+        console.log(Array.from(boxs));
+        let boxsArr = Array.from(boxs);
+        // 배열 생성: Array.from()
+        // forEach(value(box항목),index(인덱스),array(배열전체))
+        boxsArr.forEach((item, index)=>{
+             item.style.backgroundColor = 'yellow'
+             item.style.width ='50px'
+             item.style.height = '50px'
+             item.style.border = '1px solid black'
+        })
+        
+        // 3. forEach와 for문 차이
+        let text2 = document.getElementsByTagName('p');
+        console.log(text2);
+        let text2Arr=Array.from(text2)
+        text2Arr.forEach(item=>{
+            item.style.color = "blue";
+        }) // forEach 는 배열화 한 뒤에만 돌아감
+
+        console.log(text2[1].textContent);
+        for(let i=0;i<text2.length;i++){
+            text2[i].style.color='red';
+        } // for문은 모든 유사배열에 사용 가능하므로 전부 for문으로 사용하자!
+
+
+        // 4.
+        let list = document.querySelector('ul li'); // 선택자가 존재하지 않을 경우 부모 자식을 명확히
+        list.textContent = '포도';
+        console.log(list); // NodeList(3) [li, li, li]
+
+
+    </script>
+</body>
+</html>

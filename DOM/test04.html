@@ -1,0 +1,27 @@
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>dom 연습문제 - className, classList</title>
+<style>
+    .blue{
+            color: blue;
+    }
+</style>
+</head>
+<body>
+    <h1>
+    <span>난 span 태그야</span>
+    </h1>
+
+
+    <script>
+    let titleChange = document.getElementsByTagName('h1')[0];
+    let p = document.createElement('p');
+    // p.className = 'blue'; // 옛날방식
+    p.classList.add('blue'); // 최신방식(es6버전 이상)
+    p.classList.add('active'); // 최신방식(es6버전 이상)
+    p.classList.remove('active'); // 최신방식(es6버전 이상)
+    p.innerHTML = '난 js로 추가된 p태그야';
+    titleChange.appendChild(p);
+    </script>
+</body>
