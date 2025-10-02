@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS ---------------------------------------------------------------------->
+    <style>
+        *{
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+        body{
+            font-weight: 300;
+            color: #222;
+            font-size: 15px;
+            line-height: 1.6em;
+        }
+        .btn-open{
+            text-align: center;
+            padding: 7px;
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .modal{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            z-index: 10;
+            /* 모달창 숨기기 */
+            opacity: 0;
+            transition: 0.6s;
+        }        
+        .modal-conetent{
+            width: 600px;
+            background-color: #fff;
+            display: flex;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgb(0,0,0,0.16);
+            /* 이미지의 잘림현상을 없애기 위해 */
+            overflow: hidden;
+        }
+        .modal-conetent > div{
+            padding: 20px;
+        }
+        .photo{
+            flex: 1;
+            /* 이미지 백그라운드 */
+            background: url(/DOM/img/office.jpg);
+            background-repeat: no-repeat;
+            background-position: right;
+            background-size: cover;
+
+        }
+        .desc{
+            flex: 2;
+            text-align: center;
+        }
+        .btn-close{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #999;
+        }
+        .btn-close:hover{
+            color: #222;
+        }
+        .desc-content input[type="email"]{
+            display: block;
+            /* input, button display: block 해도 width 100%가 안됨 */
+            width: 100%;
+            text-align: center;
+            padding: 7px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 3px;
+        }
+        .desc-content button{
+            display: block;
+            /* input, button display: block 해도 width 100%가 안됨 */
+            width: 100%;
+            border: none;
+            background-color: crimson;
+            color: #fff;
+            padding: 7px;
+            cursor: pointer;
+            outline: none;
+            border-radius: 3px;
+
+        }
+        .overlay{
+            position: fixed;
+            background-color: rgba(0,0,0,0.3);
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+            transition: 0.4s;
+        }
+        /* 호버----------------------------------------------------------------- */
+        .desc-content input[type="email"]:hover,
+        .desc-content input[type="email"]:focus,
+        .desc-content button:hover,
+        .btn-open:hover{
+            box-shadow: 0 0 5px rgb(0,0,0,0.5);
+        }
+        .btn-open:focus{
+            box-shadow: 0 0 5px rgb(0,0,0,0.5);
+        }
+        /* javaScript class ---------------------------------------------------- */
+        .overlay.active{
+
+            visibility: visible;
+        }
+        .modal.active{
+            opacity: 1;
+        }
+    </style>
+    <!-- CSS ---------------------------------------------------------------------->
+</head>
+<body>
+    <button class="btn-open">뉴스레터 구독하기</button>
+    <!-- 모달 전체 -->
+    <div class="modal">
+        <div class="modal-conetent">
+            <!-- 사진(메인 모달창) -->
+            <div class="photo"></div>
+
+
+            <!-- 디스크립션(메인 모달창) --------------------------------------------->
+            <div class="desc">
+                <!-- 모달창 상단부 -->
+                <div class="desc-header">
+                    <h2>지금 다양한 혜택을 받아보세요.</h2>
+                    <button class="btn-close">&times;</button>
+                </div>
+                <!-- 모달창 내용 ---------------------------------------------------->
+                <div class="desc-content">
+                    <input type="email" placeholder="이메일 주소를 입력하세요" />
+                    <button type="button">뉴스레터 구독하기</button>
+                    <p>
+                    스타트업메이트 뉴스룸의 다양한 소식과 혜택을 이메일로 받아
+                    보시려면 구독 신청 해주시기 바랍니다. 스타트업메이트에 대해 알고
+                    싶은 뉴스, 꼭 알아야 할 뉴스를 신속하고 정확하게 전합니다.
+                    </p>
+                </div>
+            </div>
+            <!---------------------------------------------------------------------->
+
+        </div>
+    </div>
+    <!-- 오버레이: 검은색 투명도 줄 예정 -->
+    <div class="overlay"></div>
+
+
+    <!-- 스크립트  ------------------------------------------------------------------>
+    <script>
+        // class="btn-open" 뉴스레터 구독하기 버튼 클릭시 모달창이 화면에 출력
+        // class="btn-close" 닫기 버튼 클릭시 모달창 화면에서 사라짐 + 오버레이 사라짐
+        // 'active' 클래스명 classList.add()를 이용하여 추가
+        // classList.remove() 이용하여 삭제
+
+        let btnOpen = document.querySelector('.btn-open');
+        let btnClose = document.querySelector('.btn-close');
+        let modal = document.querySelector('.modal');
+        let overlay = document.querySelector('.overlay');
+
+        // 버튼 클릭 시 클래스 생성 및 제거
+        btnOpen.onclick = function(){
+            modal.classList.add('active');
+            overlay.classList.add('active');
+        }
+        btnClose.onclick = function(){
+            modal.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+    </script>
+</body>
+</html>

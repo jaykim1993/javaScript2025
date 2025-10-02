@@ -1,0 +1,41 @@
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>dom 연습문제 - classList-toggle</title>
+<style>
+   .active{
+    background-color: yellow;
+   }
+</style>
+</head>
+<body>
+    <!-- 13 버튼 클릭 시 classList.toggle("active") 기능 구현하세요. -->
+    <button id="box1">13번</button>
+    <!-- 14 JS에서 배경색을 "red"로 변경하세요. -->
+    <div id="box2" style="width: 100px; height:
+    100px;">12</div>
+    <!-- 15  JS로 링크 주소를 "https://google.com"으로 변경하세요. -->
+    <a id="link" href="https://naver.com">네이버</a>
+    <!-- 16 JS로 src 속성 값을 콘솔에 출력하세요. -->
+    <img id="logo" src="/DOM/img/hot.png">
+
+
+    <script>
+    // 13.
+    let box1 = document.getElementById('box1');
+    box1.classList.toggle("active"); 
+    
+    // 14.
+    let box2 = document.getElementById('box2');
+    box2.style.backgroundColor = 'red';
+    box2.style.border = '1px solid black';
+
+    // 15.
+    let link = document.getElementById('link');
+    link.href="https://google.com";
+
+    // 16.
+    let logo = document.getElementById('logo');
+    console.log(logo.src);
+    </script>
+</body>

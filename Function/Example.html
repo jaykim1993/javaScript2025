@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 3번 버튼 -->
+     <button type="button" id="no3">Click!</button>
+     <br/>
+    <hr>
+
+    <!-- 6번 버튼 -->
+     <button type="button" id="no6">시간 확인</button>
+     <br/>
+    <hr>
+
+    <!-- 7번 버튼 -->
+     <button id="toggleBtn">이미지 토글</button>
+     <img id="myImg" src="/Function/img/pic-2.jpg" style="display: block" />
+    <hr>
+    <!-- 8번 버튼 -->
+    <p id="text">색상이 바뀝니다</p>
+    <button id="colorBtn">색상 변경</button><br/>
+    <hr>
+
+    <!-- 9번 버튼 -->
+    <input id="num1" type="number"> +
+    <input id="num2" type="number">
+    <button id="sumBtn">계산</button>
+    <div id="result"></div>
+
+
+
+    <script>
+        // 1.-----------------------------------------------------------
+        // ① 사용자의 이름을 받아 "안녕하세요, OOO님!" 
+        //   형태의 문자열을 반환하는 함수를 작성하세요.
+        // ② 실행 예시 : console.log(greetUser("철수"));
+        // ③ 저장할 파일명 Ex_01.html 로 작성하시오
+
+        let greetUser = (name) => {
+            console.log(`안녕하세요, ${name}님!!`);
+            }
+        greetUser("철수");
+        
+        // 2.-----------------------------------------------------------
+        // ① 상품 가격과 할인율을 받아 최종 결제 금액을 반환하는 
+        // getDiscountPrice(price, rate) 함수를 작성하세요.
+        // ② 실행 예시 : console.log(getDiscountPrice(10000, 0.1));
+        // ③ 저장할 파일명 Ex_02.html 로 작성하시오.
+
+        let getDiscountPrice = (price, rate) => {
+            let result = price*(1-rate);
+            return result;
+            }
+            console.log(getDiscountPrice(10000, 0.1));
+
+        // 3.-----------------------------------------------------------
+        // ① 버튼을 클릭할 때마다 클릭 횟수를 콘솔에 출력하는 코드를 작성하세요.
+        // ② 버튼 3번 클릭 → 콘솔에 1, 2, 3 순서대로 출력
+        // ③ 저장할 파일명 Ex_03.html 로 작성하시오.
+        let btn1 = document.getElementById('no3');
+        let count = 0;
+        btn1.addEventListener('click',() =>{
+            count++;
+            console.log(count);
+        })
+        
+        
+        // 4.-----------------------------------------------------------
+        // ① 배열로 전달된 장바구니 가격 목록의 합계를 반환하는 
+        // getTotal(cart) 함수를 작성하세요.
+        // ② 실행 예시 : console.log(getTotal([1000, 2000, 3000]))
+        // ③ 저장할 파일명 Ex_04.html 로 작성하시오.
+        
+        let getTotal=(cart)=>{
+            let addResult = 0;
+            for(let i=0;i<cart.length;i++){
+                addResult += cart[i];
+            }
+            return addResult;
+        }
+        console.log(getTotal([1000, 2000, 3000]));
+
+        // 5.-----------------------------------------------------------
+        // ① 사용자가 입력한 비밀번호가 8자 이상인지 검사하는 함수를 작성하세요.
+        // ② 실행 예시 : console.log(validatePassword("1234")); // false
+        // console.log(validatePassword("12345678")); // true
+        // ③ 저장할 파일명 Ex_05.html 로 작성하시오.
+
+        // 화살표 함수에서만 사용 가능 중괄호 없으면 3항 연산자처럼 사용이 가능하다!
+        let validatePassword=(password)=>password.length >= 8;
+        console.log(validatePassword("12345678"));
+
+        //6.-----------------------------------------------------------
+        // ① 버튼을 누르면 현재 시간을 콘솔에 출력하는 코드를 작성하세요.
+        // ② 버튼 클릭 → 콘솔에 현재 시간: 2025-09-30 10:23:11
+        // ③ 저장할 파일명 Ex_06.html 로 작성하시오.
+        let btn2 = document.getElementById('no6');
+        let date = new Date().toLocaleString() + ' ';
+        btn2.addEventListener('click', ()=>{
+            let result = date;
+            console.log(result);
+        })
+        
+        //7.-----------------------------------------------------------
+        // ① 버튼 클릭 시 이미지를 보였다가 숨기 함수를 addEventListener()를 이용해 작성하시오.
+        // ② 아래 주어진 <HTML> 이용해 작성하시오.
+        // ③ classList.toggle() 말고 if문을 이용하여 작성하시오.
+        // ④ 저장할 파일명 Ex_07.html 로 작성하시오.
+        let toggleBtn = document.getElementById('toggleBtn');
+        let myImg = document.getElementById('myImg');
+        let clickCounter = 0;
+        toggleBtn.addEventListener('click', ()=>{
+                clickCounter ++;
+                if(clickCounter%2==0){
+                    myImg.style.display='block';
+                } else if(clickCounter%2==1){
+                    myImg.style.display='none';
+                }
+        })
+        
+        //8.-----------------------------------------------------------
+        // ① 버튼 클릭 시 텍스트 색상을 빨강 → 파랑 → 초록 순으로 변경하세요.
+        // ② 아래 주어진 <HTML> 이용해 작성하시오.
+        // ③ const colors = ['red', 'blue', 'green’]; 이용해 작성 하시오.
+        // ④ 저장할 파일명 Ex_08.html 로 작성하시오.
+        let text = document.getElementById('text');
+        let colorBtn = document.getElementById('colorBtn');
+        const colors = ['red', 'blue', 'green'];
+        let index = 0;
+        colorBtn.addEventListener('click',()=>{
+            switch(index){
+                    case 1:
+                        text.style.color = colors[1];
+                        break;
+                    case 2:
+                        text.style.color = colors[2];
+                        break;
+                    default:
+                        text.style.color = colors[0];
+                        index = 0;
+                        break;
+                }
+            index++;
+        })
+        
+        //9.-----------------------------------------------------------
+        // ① 두 개의 입력값을 더해 결과를 출력하세요..
+        // ② 아래 주어진 <HTML> 이용해 작성하시오.
+        // ③ 저장할 파일명 Ex_09.html 로 작성하시오.
+
+        //** 인풋 숫자를 함수 안에 선언해야 하는 이유 **
+        // 페이지 로드 시점에서 이미 num1, num2 값이 결정됨.
+        // 즉, 사용자가 input에 나중에 입력해도 반영되지 않고, 처음에 읽은 값만 계속 찍힘.
+        // 보통 input의 기본값은 빈 문자열("")이니까 → Number("") = 0 
+        //👉 그래서 클릭해도 계속 0만 나옴.
+        let sumBtn = document.getElementById('sumBtn');
+        let result = document.getElementById('result');
+        let add = 0;
+
+        sumBtn.addEventListener('click',()=>{
+            let num1 = Number(document.getElementById('num1').value);
+            let num2 = Number(document.getElementById('num2').value);
+           
+            add = '결과: ' + (num1 + num2);
+            result.innerHTML = add;
+        })
+
+    </script>
+</body>
+</html>

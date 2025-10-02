@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지변경 화면 만들기</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+      *{
+        font-family: sans-serif;
+        box-sizing: border-box;
+        list-style: none;
+      }
+      body{
+        font-weight: 300;
+        color: #222;
+        font-size: 15px;
+        line-height: 1.6em;
+      }
+      #container{
+        box-shadow: 0 0 5px rgb(0,0,0,0.3);
+        border-radius: 10px;
+        margin: 0 auto;
+        width: 800px;
+        padding: 20px;
+        background-color: seashell;
+      }
+      .main{
+        display: flex;
+        
+      }
+      /* 좌측 이미지 ----------------------------------------------------- */
+      #heading{
+        margin-bottom: 30px;
+      }
+      .img-contianer{
+        width: 350px;
+        
+      }
+      #prod-pic > img{
+        width: 350px;
+        height: 400px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      #small-pic{
+        display: flex;
+        justify-content: space-between;
+      }
+      #small-pic > img{
+        border-radius: 3px;
+        height: 110px;
+        cursor: pointer;
+      }
+      .leftimg{
+        display: inline-box;
+      }
+      /* 본문 우측 정보 ------------------------------------------------- */
+      #desc{
+        width: 400px;
+        margin: 0 auto;
+        line-height: 50px;
+        font-size: 20px;
+        padding-top: 50px;
+        font-weight: 400;
+      }
+      /* 장바구니 버튼 --------------------------------------------------- */
+      #desc ul button{
+        display: block;
+        width: 100%;
+        margin-top: 40px;
+        margin-bottom: 54px;
+        padding: 20px 10px;
+        font-size: 23px;
+        border: 1px solid #888;
+        outline: none;
+        background-color: #fff;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      /* 상세설명보기 버튼 --------------------------------------------------- */
+      #view{
+        text-align: center;
+        padding: 10px 20px;
+        border: 1px solid #888;
+        outline: none;
+        color: #222;
+        font-weight: 4500;
+        background-color: #fff;
+        border-radius: 3px;
+        cursor: pointer;
+        text-decoration: none;
+        
+      }
+      #desc ul button:hover:hover, 
+      #view:hover{
+        box-shadow: 0 0 3px rgb(0,0,0,0.3);
+        background-color: blanchedalmond;
+        color: #222;
+      }
+
+      /* 세부사항 창 생성 ------------------------------------------------- */
+      #detail{
+        padding: 20px;
+        font-weight: 300;
+        /* 최초 숨기기 */
+        opacity: 0;
+        transition: 0.6s;
+        background-color: rgb(253, 249, 246);
+        border-radius: 10px;
+        box-shadow: 0 0 3px rgb(0,0,0,0.3);
+      }
+      /* 창생성 스크립트 -------------------------------------------------- */
+      #detail.active{
+        opacity: 1;
+      }
+      
+    </style>
+</head>
+<body>
+     <div id="container"> 
+      <div class="main">
+      <div class="img-contianer">
+        <h1 id="heading">에디오피아 게뎁</h1>
+        <div id="prod-pic">
+          <img
+            src="/Function/img/coffee-pink.jpg"
+            alt="에디오피아 게뎁"
+            id="cup"
+            width="200"
+            height="200"
+          />
+          <!-- <div class="leftimg">
+            <a href="#"><i class="fa-solid fa-greater-than"></i></a>
+          </div> -->
+          <div id="small-pic">
+            <img src="/Function/img/coffee-pink.jpg" class="small" />
+            <img src="/Function/img/coffee-blue.jpg" class="small" />
+            <img src="/Function/img/coffee-gray.jpg" class="small" />
+          </div>
+          <!-- <div class="rightimg">
+            <a href="#"><i class="fa-solid fa-less-than"></i></a>
+          </div> -->
+        </div>
+        
+      </div>
+
+      <div id="desc">
+        <ul>
+          <li><b>상품명 : 에디오피아 게뎁</b></li>
+          <li class="bluetext">판매가 : 9,000원</li>
+          <li>배송비 : 3,000원<br />(50,000원 이상 구매 시 무료)</li>
+          <li>적립금 : 180원(2%)</li>
+          <li>로스팅 : 2019.06.17</li>
+          <button>장바구니 담기</button>
+          <a href="#" id="view">상세 설명 보기</a>
+        </ul>
+        
+      </div>
+      </div>
+
+      <hr/>
+      <div id="detail">
+        <h2>상품 상세 정보</h2>
+        <ul>
+          <li>원산지 : 에디오피아</li>
+          <li>지 역 : 이르가체프 코체레</li>
+          <li>농 장 : 게뎁</li>
+          <li>고 도 : 1,950 ~ 2,000 m</li>
+          <li>품 종 : 지역 토착종</li>
+          <li>가공법 : 워시드</li>
+        </ul>
+        <h3>Information</h3>
+        <p>
+          2차 세계대전 이후 설립된 게뎁 농장은 유기농 인증 농장으로 여성의 고용
+          창출과 지역사회 발전에 기여하며 3대째 이어져 내려오는 오랜 역사를 가진
+          농장입니다. 게뎁 농장은 SCAA 인증을 받은 커피 품질관리 실험실을 갖추고
+          있어 철처한 관리를 통해 스페셜티 커피를 생산합니다.
+        </p>
+        <h3>Flavor Note</h3>
+        <p>은은하고 다채로운 꽃향, 망고, 다크 체리, 달달함이 입안 가득.</p>
+      </div>
+    </div>
+
+   
+
+    <!-- 스크립트  ------------------------------------------------------------------>
+
+    <script>
+      
+      // 이미지 클릭 시 변경되게 하기 -------------------------------------------------
+      let small = document.querySelectorAll('.small');
+      let cup = document.getElementById('cup');
+
+      for(let i=0;i<small.length;i++){
+      small[i].addEventListener('mouseover', function(){
+        let newImg = this.src; 
+        // this: 이벤트가 발생한 대상 요소를 가리킨다.
+            // small src를 의미한다.
+            // 지금 이벤트가 일어난 그 요소 자기 자신
+        // ******this는 **"누가 호출했냐"**에 따라 달라짐
+                  // 전역 → window
+                  // 객체 메서드 → 해당 객체
+                  // 생성자 → 새로 생성된 객체
+                  // 이벤트 핸들러 → 이벤트 대상 요소
+                  // 화살표 함수 → 외부 스코프의 this
+        cup.setAttribute('src',newImg);
+      });
+    }
+    // 화살표 함수를 쓰면 안됨.
+    // addEventListener 안에서 화살표 함수 ()=>{}를 사용했죠
+    // 화살표 함수는 자기만의 this를 갖지 않고, 바깥 스코프의 this를 그대로 가져옵니다.
+    // 이 경우 바깥 스코프는 for문이 도는 전역이므로, 브라우저에서는 window를 가리키게 돼요.
+    // 따라서 this.src는 사실 **이벤트가 발생한 <img> 요소의 src가 아니라 undefined**가 나옵니다.
+    // for문 + addEventListener 에서는 화살표가 아님 funtion()을 심어야 한다.
+
+   
+      // 세부사항 화면 넘어가기 -------------------------------------------------------
+      let view = document.getElementById('view');
+      let detail= document.getElementById('detail');
+      view.onclick = function(){
+        detail.classList.toggle("active");
+      }
+      
+    </script>
+</body>
+</html>

@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메가박스</title>
+    <link rel="styleSheet" href="/Megabox/megabox.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- header ----------------------------------------------------------- -->
+        <header>
+            <div class="menubar_width">
+                <!-- header01 --------->
+                <div class="header01">
+                    <!-- header01 왼쪽 (멤버쉽, 고객센터 ....) -->
+                    <ul class="header_left">
+                        <li>
+                            <a href="#" class="header_leftmenu">VIP LOUNGE</a>
+                            <a href="#" class="header_leftmenu">멤버쉽</a>
+                            <a href="#" class="header_leftmenu">고객센터</a>
+                        </li>
+                    </ul>
+                    <!-- header01 오른쪽 (로그아웃, 빠른예매) -->
+                    <ul class="header_right">
+                        <li>
+                            <a href="#" class="header_rightmenu">로그아웃</a>
+                            <a href="#" class="header_rightmenu">빠른예매</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!-- header02 --------->
+                <div class="header02">
+                    <!-- header02 왼쪽 (리스트?,검색) -->
+                    <div class="header02_left">
+                        <!-- list 아이콘 -->
+                        <a href="#" id="list_icon"><i class="fa-solid fa-list" ></i></a>
+                        <!-- 돋보기 아이콘 -->
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <!-- header02 미들 (메뉴바) -->
+                    <div class="header02_middle">
+                        <ul class="menu">
+                            <li>
+                                <a href="#"><p class="menubar">영화</p></a>
+                                <a href="#"><p class="menubar">예매</p></a>
+                                <a href="#"><p class="menubar">극장</p></a>
+                                <img src="img/logo.png">
+                                <a href="#"><p class="menubar">이벤트</p></a>
+                                <a href="#"><p class="menubar">스토어</p></a>
+                                <a href="#"><p class="menubar">혜택</p></a>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                    <!-- header02 오른쪽 (일정,마이페이지) -->
+                    <div class="header02_right">
+                        <!-- 일정 아이콘 -->
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <!-- 마이페이지 아이콘 -->
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- (메뉴바 마우스오버하면 보이는 파트) -->
+            <ul class="header02_menu">
+                <li class="menu_hidden">
+                    <span >전체영화</span>
+                </li>
+                <li class="menu_hidden">
+                    <span >빠른예매</span>
+                    <span >상영시간표</span>
+                    <span >더 부티크 프라이빗 예매</span>
+                </li>
+                <li class="menu_hidden">
+                    <span >전체극장</span>
+                    <span >특별관</span>
+                </li>
+                <li class="menu_hidden">
+                    <span >진행중 이벤트</span>
+                    <span >지난 이벤트</span>
+                    <span >당첨자 발표</span>
+                </li>
+                <li class="menu_hidden">
+                </li>
+                <li class="menu_hidden">
+                    <span >메가박스 멤버쉽</span>
+                    <span >제휴/할인</span>
+                </li>
+            </ul>
+            
+            
+
+             <!-- header03 --------->
+            <div class="header03">
+                <!-- 클릭시 보이는 카테고리 -->
+                <div class="category">
+                    <h2>SITEMAP</h2>
+                    <ul class="sitemap">
+                        <li>
+                            <strong class="title">영화</strong>
+                            <p class="content">전체영화</p>
+                        </li>
+                        <li>
+                            <strong class="title">예매</strong>
+                            <p class="content">빠른예매</p>
+                            <p class="content">상영시간표</p>
+                            <p class="content">더 부티크 프라이빗 예매</p>
+                        </li>
+                        <li>
+                            <strong class="title">극장</strong>
+                            <p class="content">전체극장</p>
+                            <p class="content">특별관</p>
+                        </li>
+                        <li>
+                            <strong class="title">이벤트</strong>
+                            <p class="content">진행중 이벤트</p>
+                            <p class="content">지난 이벤트</p>
+                            <p class="content">당첨자 발표</p>
+                        </li>
+                        <li>
+                            <strong class="title">스토어</strong>
+                            <p class="content">새로운 상품</p>
+                            <p class="content">메가티켓</p>
+                            <p class="content">팝콘/음료/굿즈</p>
+                        </li>
+                        <li>
+                            <strong class="title">나의 메가박스</strong>
+                            <p class="content">나의 메가박스 홈</p>
+                            <p class="content">예매/구매내역</p>
+                            <p class="content">영화관람권</p>
+                            <p class="content">스토어교환권</p>
+                            <p class="content">할인/제휴쿠폰</p>
+                            <p class="content">멤버쉽포인트</p>
+                            <p class="content">나의 무비스토리</p>
+                            <p class="content">나의 이벤트 응모내역</p>
+                            <p class="content">나의 문의내역</p>
+                            <p class="content">자주쓰는 할인카드</p>
+                            <p class="content">회원정보</p>
+                        </li>
+                        <div class="secondpart">
+                            <li>
+                                <strong class="title">혜택</strong>
+                                <p class="content">멤버쉽 안내</p>
+                                <p class="content">VIP LOUNGE</p>
+                                <p class="content">제휴/할인</p>
+                            </li>
+                            <li>
+                                <strong class="title">고객센터</strong>
+                                <p class="content">고객센터 홈</p>
+                                <p class="content">자주묻는질문</p>
+                                <p class="content">공지사항</p>
+                                <p class="content">1:1문의</p>
+                                <p class="content">단체/대관문의</p>
+                                <p class="content">분실물문의</p>
+                            </li>
+                            <li>
+                                <strong class="title">회사소개</strong>
+                                <p class="content">메가박스소개</p>
+                                <p class="content">사회공헌</p>
+                                <p class="content">홍보자료</p>
+                                <p class="content">제휴/부대산업문의</p>
+                                <p class="content">온라인제보센터</p>
+                                <p class="content">IR자료</p>
+                                <p class="content">인재채용</p>
+                                <p class="content">윤리경영</p>
+                            </li>
+                            <li>
+                                <strong class="title">이용정책</strong>
+                                <p class="content">이용약관</p>
+                                <p class="content">위치기반서비스 이용약관</p>
+                                <p class="content">개인정보처리방침</p>
+                                <p class="content">스크린수배정에관한기준</p>
+                            </li>
+                        </div>
+                        
+                    </ul>
+                </div>
+                <div class="header03_all">
+                    <ul class="header03_left">
+                        <li>
+                            <!-- 홈 아이콘 -->
+                            <i class="fa-solid fa-house"></i>
+                            <a href="#">예매</a>
+                            <a href="#">빠른예매</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+                
+        </header>
+
+
+        <!-- main 중간 파트-------------------------------------------------- --->
+        <main>
+            <h2>빠른 예매</h2>
+            <section>
+                <div class="left">
+                    <ul>
+                        <li class="first_li">
+                            <span id="people_num">관람인원선택</span>
+                            <button type="button" id="reset_btn">초기화</button>
+                        </li>
+                        <li class="people_type">
+                            <div class="adult">
+                                <span class="type">성인</span>
+                                <button class="minus">-</button>
+                                <span class="p_num">0</span>
+                                <button class="plus">+</button>
+                            </div>
+                            <div class="adult">
+                                <span class="type">청소년</span>
+                                <button class="minus">-</button>
+                                <span class="p_num">0</span>
+                                <button class="plus">+</button>
+                            </div>
+                            <div class="adult">
+                                <span class="type">경로</span>
+                                <button class="minus">-</button>
+                                <span class="p_num">0</span>
+                                <button class="plus">+</button>
+                            </div>
+                            <div class="adult">
+                                <span class="type">우대</span>
+                                <button class="minus">-</button>
+                                <span class="p_num">0</span>
+                                <button class="plus">+</button>
+                            </div>
+                        </li>
+                    </ul>
+                     <!-- 좌석 테이블 -->
+                     <div class="table_container">
+                        <div class="screen"><h3>SCREEN</h3></div>
+                        <div class="seat_table">
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <!-- 영화 제목-->
+                    <div class="movie_title">
+                        <ul>
+                            <li><span id="age">15 </span><span id="title">어쩔수가없다</span></li>
+                            <li><span class="blur">2D</span></li>
+                        </ul>
+                        
+                    </div>
+                    
+                    <!-- 영화 정보 -->
+                    <div class="movie_info">
+                        <!-- 영화관 위치, 관, 시간 등 -->
+                         <ul>
+                            <li><span class="blur">강동</span></li>
+                            <li><span class="blur">3관</span></li>
+                            <li><span class="blur">2025.10.04(토)</span></li>
+                            <li><span class="time">17:05 ~ 19:33</span><button class="dropdown">∨</button></li>
+                        </ul>
+                        <div class="movie_detail"></div>
+                        <!-- 영화 포스트 -->
+                        <div class="movie_img">
+                            <img src="img/movieposter.jpg" alt="movieposter">
+                        </div>
+                    </div>
+                    <!-- 영화 좌석 -->
+                     <div class="seat_info">
+                        <!-- 좌석 상태, 정보 -->
+                        <div class="seat_condition">
+                            <ul>
+                                <li>
+                                    <button class="seat_btn1"></button>
+                                    <span class="blur">선택</span>
+                                </li>
+                                <li>
+                                    <button class="seat_btn2"></button>
+                                    <span class="blur">예매완료</span>
+                                </li>
+                                <li><button class="seat_btn3"></button>
+                                    <span class="blur">선택불가</span>
+                                </li>
+                                <li><button class="seat_btn4"></button>
+                                    <span class="blur">일반</span>
+                                </li>
+                                <li><button class="seat_btn5"></button>
+                                    <span class="blur">장애인석</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 선택 좌석 표시 -->
+                        <div class="seat_select">
+                            <span class="blur">선택좌석</span>
+                            <div class="seat_array"></div>
+                        </div>
+                     </div>
+                     <!-- 영화 가격 -->
+                     <div class="select_result">
+                        <ul>
+                            <li><span class="select_list"></span></li>
+                            <li class="price"><span class="final">최종결제금액</span><span class="total_price"></span></li>
+                        </ul>
+                     </div>  
+                     <!-- 버튼 -->
+                     <div class="btn">
+                        <!-- 이전 버튼 -->
+                        <button type="button" class="before_btn">이전</button>
+                        <button type="button" class="after_btn">결제</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <img src="/Megabox/img/footer.png">
+        </footer>
+
+        <!-- 모달창 -->
+        <div class="modal">
+            <div class="modal_title">
+                <span class="title">알림</span>
+                <span class="close_btn">X</span>
+            </div>
+            <div class="modal_content">
+                <p class="content"></p>
+                <button class="modal_btn">확인</button>
+            </div>
+        </div>
+        <!-- 오버레이 -->
+        <div class="overlay"></div>
+    </div>
+
+       <script>
+         // 메뉴바 (마우스 오버 -> 보임, 아웃 -> 숨김)
+        let menubar=document.querySelectorAll('.menubar'); // 배열
+        let menu_hidden=document.querySelectorAll('.menu_hidden');
+
+        for(let i=0;i<menubar.length;i++){
+            // 마우스오버
+            menubar[i].addEventListener('mouseover',()=>{
+                // console.log('마우스오버'+menubar[i].textContent);
+                // menu_hidden[i].classList.add('active');
+                menu_hidden[i].style.display='block';
+            })
+            // 마우스아웃
+            menubar[i].addEventListener('mouseout',()=>{
+                // menu_hidden[i].classList.remove('active');
+                menu_hidden[i].style.display='none';
+            })
+            
+        }
+
+        // 모달창
+        let close_btn=document.querySelector('.close_btn');
+        let overlay=document.querySelector('.overlay');
+        let modal=document.querySelector('.modal');
+        let modal_btn=document.querySelector('.modal_btn');
+        // DOM접근할 때 부모를 타줘야 함!! 
+        let content=document.querySelector('.modal .modal_content > .content');
+
+        
+        let modal_text=[
+            "인원선택은 총 8명까지 가능합니다.",
+            "좌석은 1명 이상 선택 가능합니다.",
+            "좌석은 선택 인원수만큼 선택 가능합니다.",
+            "좌석은 최대 8개까지 선택 가능합니다.",
+            "선택하신 좌석을 모두 취소하고 다시 선택하시겠습니까?",
+
+            "◆ 경로 : 만 65세 이상(신분증)"+"</br>"+"</br>"+"경로요금은 만65세 이상 고객에게만 적용되며, 상영관 입장시 본인신분증을 제시해 주시기 바랍니다(*미지참시 입장 제한)"
+            +"</br>"+"</br>"+"*경로선택 시 추가 할인이 제한될 수 있습니다",
+
+            "※만 65세이상 고객님께서는 [경로]발권 부탁드립니다(*지점별 상이)"+"</br>"+"</br>"+"◆ 우대요금은 장애인 고객에게 적용되며, 상영관 입장 시 본인확인 증빙서류를 제시해 주시기 바랍니다."
+            +"</br>"+"(미지참 시 입장 제한)"+"</br>"+"</br>"+"- 장애인: 복지카드"+"</br>"+"- 국가유공자: 국가유공자증"+"</br>"+"</br>"
+            +"위 항목 외 지점별 우대요금 추가적용 대상은 직원확인 후 발권이 가능합니다"+"</br>"+"*우대선택 시 추가 할인이 제한될 수 있습니다."+
+            "*국가유공자증에 한하며, 국가유공자 유족증 등은 할인이 불가합니다.",
+        ]
+
+
+
+        // X누르면 모달창 삭제
+        close_btn.addEventListener('click',()=>{
+            overlay.style.display='none';
+            modal.style.display='none';
+        })
+        // 확인버튼 누르면 모달창 삭제
+        modal_btn.addEventListener('click',()=>{
+            overlay.style.display='none';
+            modal.style.display='none';
+        })
+
+
+        // 리스트 클릭하면 카테고리 보이고 다시 숨기기 (toggle)
+        // DOM 접근
+        let list_icon=document.getElementById('list_icon');
+        let category=document.querySelector('.category');
+        // 클릭 함수
+        list_icon.addEventListener('click',()=>{
+            category.classList.toggle('active');
+        })
+
+         // ---------------------- *** <left> 좌석 테이블 *** -----------------------------------------------------------
+        let tableLeft = document.querySelector('.seat_table');
+
+        // 알파벳 배열 (10X1)
+        let abcArray = ['A','B','C','D','E','F','G','H',"I",'J'];
+
+        // 좌석 배열 (10X10)
+        let seatArray = Array.from(Array(10), ()=> new Array(10).fill(0));
+        for(let i=0; i<10; i++){
+            for(let j=0; j<10; j++){
+                seatArray[i][j] = j+1;
+            }
+        }
+
+        // 좌석 테이블 생성
+        let seatTable = "<table>";
+        for(let i=0; i<10;i++){
+            seatTable += "<tr>" + "<td class='abc_row'>" + abcArray[i] + "</td>";
+            for(let j=0; j<10; j++){
+                seatTable += `<td class="basic" data-row="${i}" data-col="${j}">${seatArray[i][j]}</td>`;
+            }
+            seatTable += "</tr>";
+        }
+        seatTable += "</table>";
+        tableLeft.innerHTML = seatTable;
+
+        // ---------------------- *** <right> 선택좌석 배열 *** -----------------------------------
+        let tableRight = document.querySelector('.seat_array');
+        let selectArray = Array.from(Array(4), ()=> new Array(2).fill('-'));
+        renderSelectTable();
+
+        function renderSelectTable(){
+            let html = "<table>";
+            for(let i=0; i<selectArray.length;i++){
+                html += "<tr>";
+                for(let j=0; j<selectArray[i].length; j++){
+                    html += `<td class='selectTableCSS'>${selectArray[i][j]}</td>`;
+                }
+                html += "</tr>";
+            }
+            html += "</table>";
+            tableRight.innerHTML = html;
+        }
+
+        // ---------------------------------------------------------------------------------
+        let select_list = document.querySelector('.select_list');
+        let total_price = document.querySelector('.total_price');
+        let totalPrice = 0;
+        total_price.innerHTML = totalPrice.toLocaleString('ko-kr') + '원';
+
+        // 결제목록 데이터
+        let priceInfo = [
+            { id:0, type: '성인', price: 13000, quantity: 0},
+            { id:1, type: '청소년', price: 10000, quantity: 0},
+            { id:2, type: '경로', price: 7000, quantity: 0},
+            { id:3, type: '우대', price: 5000, quantity: 0}
+        ]
+
+        // -------------------*** 초기화 버튼 ***-----------------------------------------
+    
+        let reset_btn=document.querySelector('#reset_btn');
+        let p_num= document.querySelectorAll('.p_num');
+        let sumQuantity = 0;
+        
+        
+
+        function reset(){
+            reset_btn.addEventListener('click',()=>{
+                // 숫자 초기화
+                for(let i=0;i<p_num.length;i++){
+                    p_num[i].textContent=0;
+                    priceInfo[i].quantity = 0;
+                }
+                totalPrice = 0;
+                select_list.innerHTML = '';
+                total_price.innerHTML = totalPrice.toLocaleString('ko-kr') + '원';
+                sumQuantity = 0;
+
+                // 선택 좌석 초기화
+                selectArray = Array.from(Array(4), ()=> new Array(2).fill('-'));
+                renderSelectTable();
+
+                // 좌석 클래스 초기화
+                let seatCells = document.querySelectorAll('.basic, .cantselect, .selected');
+                seatCells.forEach((cell, index)=>{
+                    cell.classList.remove('cantselect', 'selected');
+                    cell.classList.add('basic');
+                    cell.textContent = (index % 10) + 1; // 원래 번호 복원
+                });
+            })
+        }
+        reset();
+        
+        
+
+        
+        // 버튼 요소 가져오기
+        let minus = document.querySelectorAll('.minus');
+        let plus = document.querySelectorAll('.plus');
+
+        // - 버튼 기능
+        for(let i=0;i<minus.length;i++){
+            minus[i].addEventListener('click',()=>{
+                if(Number(p_num[i].textContent) < 1){
+                    select_list.innerHTML = ' ';
+                   content.textContent=modal_text[1];
+                    overlay.style.display='block';
+                    modal.style.display='block';
+                    return;
+                }else{
+                    p_num[i].textContent--;
+                    priceInfo[i].quantity--;
+                    totalPrice -= priceInfo[i].price;
+                    total_price.innerHTML = totalPrice.toLocaleString('ko-kr') + '원';
+                    sumQuantity -= 1;
+                    console.log(sumQuantity);
+                    selectArray = Array.from(Array(4), ()=> new Array(2).fill('-'));
+                    renderSelectTable();
+                }
+                // 좌석 선택 제어 
+                if (sumQuantity === 1) {
+                    // 1명 관람 시 짝수열 좌석 막기
+                    for (let i = 0; i < 10; i++) {
+                        for (let col = 0; col < 10; col++) {
+                            let cell = seatCells[i * 10 + col];
+                            if (col % 2 === 0) { 
+                                cell.classList.remove('basic');
+                                cell.classList.add('cantselect');
+                                cell.textContent = 'X';
+                            }
+                        }
+                    }
+                } else if (sumQuantity !== 1) {
+                    // 2명 이상 관람 시 좌석 원상복구
+                    for (let i = 0; i < 10; i++) {
+                        for (let col = 0; col < 10; col++) {
+                            let cell = seatCells[i * 10 + col];
+                            cell.classList.remove('cantselect', 'selected');
+                            cell.classList.add('basic');
+                            cell.textContent = col + 1; // 좌석번호 복구
+                        }
+                    }
+                }
+            })
+            
+        }
+        // + 버튼 기능
+        // 경로, 우대 좌석 +버튼 클릭하면 모달창 
+        plus[2].addEventListener('click',()=>{
+            let p_num= document.querySelectorAll('.p_num');
+            if(p_num[2].textContent==='0'){
+                content.innerHTML=modal_text[5];
+                overlay.style.display='block';
+                modal.style.display='block';
+
+                return;
+            }
+        })
+        plus[3].addEventListener('click',()=>{
+            let p_num= document.querySelectorAll('.p_num');
+            if(p_num[3].textContent==='0'){
+                content.innerHTML=modal_text[6];
+                overlay.style.display='block';
+                modal.style.display='block';
+
+                return;
+            }
+        })
+
+        for(let i=0;i<plus.length;i++){
+            plus[i].addEventListener('click', function(){
+                // 8명 이상 좌석 선택 불가 모달창
+                if(Number(sumQuantity) > 7){
+                    content.textContent=modal_text[0];
+                    overlay.style.display='block';
+                    modal.style.display='block';
+                    return;
+                }else{
+                    p_num[i].textContent++;
+                    priceInfo[i].quantity++;
+                    totalPrice += priceInfo[i].price;
+                    total_price.innerHTML = totalPrice.toLocaleString('ko-kr') + '원';
+                    sumQuantity += 1;
+                    renderSelectList();
+                    console.log(sumQuantity);
+                }
+                // 좌석 선택 제어 
+                if (sumQuantity === 1) {
+                    // 1명 관람 시 짝수열 좌석 막기
+                    for (let i = 0; i < 10; i++) {
+                        for (let col = 0; col < 10; col++) {
+                            let cell = seatCells[i * 10 + col];
+                            if (col % 2 === 0) { 
+                                cell.classList.remove('basic');
+                                cell.classList.add('cantselect');
+                                cell.textContent = 'X';
+                            }
+                        }
+                    }
+                } else if (sumQuantity !== 1) {
+                    // 2명 이상 관람 시 좌석 원상복구
+                    for (let i = 0; i < 10; i++) {
+                        for (let col = 0; col < 10; col++) {
+                            let cell = seatCells[i * 10 + col];
+                            cell.classList.remove('cantselect', 'selected');
+                            cell.classList.add('basic');
+                            cell.textContent = col + 1; // 좌석번호 복구
+                        }
+                    }
+                }
+            })
+        }
+        // ---------------------- 좌석 클릭 시 선택 / 해제 기능 ----------------------
+        seatCells = document.querySelectorAll('.basic');
+        for (let i = 0; i < seatCells.length; i++) {
+            seatCells[i].addEventListener('click', function() {
+                if (seatCells[i].classList.contains('cantselect')) return;
+                let row = Math.floor(i / 10);
+                let col = i % 10;
+                let seatName = abcArray[row] + (col + 1);
+                if (seatCells[i].classList.contains('selected')) {
+                    seatCells[i].classList.remove('selected');
+                    removeFromSelectArray(seatName);
+                } else {
+                    // 선택인원보다 좌석선택 높을 시 모달창
+                    if (getSelectedCount() >= sumQuantity) {
+                        content.textContent=modal_text[2];
+                        overlay.style.display='block';
+                        modal.style.display='block';
+                        return;
+                    }
+                    seatCells[i].classList.add('selected');
+                    addToSelectArray(seatName);
+                }
+                renderSelectTable();
+            })}
+
+
+        // -------------------- 관람 인원 선택 목록 우측 업데이트 함수 ------------------------
+        function renderSelectList(){
+            let selectList = ' ';
+            for (let i = 0; i < priceInfo.length; i++) {
+                if (priceInfo[i].quantity > 0) {
+                    selectList += `${priceInfo[i].type} ${priceInfo[i].quantity} · `;
+                }
+            }
+            select_list.innerHTML = selectList.slice(0, -2); // 마지막 · 제거
+        }
+        function getSelectedCount() {
+            let count = 0;
+            for (let i = 0; i < selectArray.length; i++) {
+                let row = selectArray[i];
+                for (let j = 0; j < row.length; j++) {
+                    if (row[j] !== '-') {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+
+        function addToSelectArray(seatName){
+            for(let i=0;i<selectArray.length;i++){
+                for(let j=0;j<selectArray[i].length;j++){
+                    if(selectArray[i][j] === '-'){
+                        selectArray[i][j] = seatName;
+                        return;
+                    }
+                }
+            }
+        }
+
+        function removeFromSelectArray(seatName){
+            for(let i=0;i<selectArray.length;i++){
+                for(let j=0;j<selectArray[i].length;j++){
+                    if(selectArray[i][j] === seatName){
+                        selectArray[i][j] = '-';
+                        return;
+                    }
+                }
+            }
+        }
+
+        // ------------------------------ 가격 업데이트 -----------------------------
+        
+        totalPrice = priceInfo.reduce((sum, p)=> sum + (p.price * p.quantity), 0);
+        total_price.innerHTML = totalPrice.toLocaleString('ko-kr') + '원';
+        
+
+        
+    </script>
+</body>
+</html>
