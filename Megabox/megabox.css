@@ -321,6 +321,9 @@ main h2{
     background-color:rgb(116, 116, 116);
     cursor: pointer;
 }
+.basic:hover{
+    background-color:rgb(80, 50, 150);
+}
 .cantselect{
     color:#fff; 
     width: 25px;
